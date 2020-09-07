@@ -1,0 +1,21 @@
+.containerBackground1{
+
+}
+.welcomeLofche{
+    width: 30%;
+    margin: 0px 45px 0px 70px;
+    box-sizing: border-box;
+    margin-top: 100px;
+}
+.logoWelcome{
+    width: 350px;
+}
+.containerWelcome{
+    font-family: 'Comfortaa', cursive;
+    color:white;
+    font-size: 21px;
+    line-height: 33px;
+    padding-left: 5px;
+    padding-top: 10px;
+    margin-left: 2px;
+}

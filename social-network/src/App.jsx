@@ -1,10 +1,20 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Welcome from './Views/Pages/Welcome';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Lista para partir</h1>
-    </div>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Welcome />
+          </Route>
+        </Switch>
+      </Router>
   );
 }
 
