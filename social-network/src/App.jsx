@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import "./Views/Styles/Styles.scss"
 import Welcome from './Views/Pages/Welcome';
 import HeaderWelcome from './Views/Components/HeaderWelcome';
 
