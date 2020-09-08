@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Styles/HeaderWelcome.css'
+import '../Styles/HeaderWelcome.scss'
 import { Link } from "react-router-dom";
 
 const HeaderWelcome = () => {
