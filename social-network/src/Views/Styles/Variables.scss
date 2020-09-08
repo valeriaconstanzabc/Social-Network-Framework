@@ -1,10 +1,22 @@
-/* <---------------FONTS---------------> */
+/* <---------------FONTS------------------------------> */
 $Font1: 'Comfortaa', cursive;
 $Font2: 'Actor', sans-serif;
 
-/* <--------------COLORS---------------> */
+/* <--------------COLORS------------------------------> */
 $ColorButton1: #4080FF;
 $Color1: white;
 
-/* <--------------SHADOWS--------------> */
+/* <--------------SHADOWS-----------------------------> */
 $ShadowButton1: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+/* <--------------BUTTONS-----------------------------> */
+%Button-blue {
+    font-family: $Font2;
+    font-size: 16px;
+    color: $Color1;
+    border: 3px;
+    background: $ColorButton1;
+    box-shadow: $ShadowButton1;
+    border-radius: 6px;
+    cursor: pointer;
+  }

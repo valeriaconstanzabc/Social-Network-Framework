@@ -1,3 +1,12 @@
+/* <---------------IMPORT VARIABLES---------------> */
+@import "./Views/Styles/Variables.scss";
+
+/* <---------------IMPORT COMPONENTS--------------> */
+@import "./Views/Styles/Components/Header.scss";
+
+/* <---------------IMPORT PAGES-------------------> */
+@import "./Views/Styles/Pages/Welcome.scss";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
