@@ -8,6 +8,7 @@ import {
 import Welcome from './Views/Pages/Welcome';
 import HeaderWelcome from './Views/Components/HeaderWelcome';
 import LogIn from './Views/Pages/LogIn';
+import Footer from './Views/Components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           </Route>
 
         </Switch>
+        <Footer />
       </Router>
   );
 }

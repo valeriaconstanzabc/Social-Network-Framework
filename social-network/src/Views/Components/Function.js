@@ -1,4 +1,5 @@
 import { auth } from '../../firebase.js';
+import firebase from 'firebase/app'
 
 export const hiddenPassword = () => {
     const x = document.querySelector('.password');
@@ -20,5 +21,21 @@ export const observer = () => {
             //    User is signed out.
             console.log('no existe usuario activo');
         }
+    });
+}
+
+export const loginWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then((result) => {
+        const user = result.user;
+        console.log('user', user);
+    }).catch(function (error) {
+    });
+}
+export const loginWithFacebook = () => {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+    }).catch(function (error) {
     });
 }
