@@ -7,6 +7,7 @@ import {
 // import "./Views/Styles/Styles.scss"
 import Welcome from './Views/Pages/Welcome';
 import HeaderWelcome from './Views/Components/HeaderWelcome';
+import LogIn from './Views/Pages/LogIn';
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
           <Route path="/" exact>
             <HeaderWelcome />
             <Welcome />
+          </Route>
+          <Route path="/iniciarSesion">
+            <HeaderWelcome />
+            <LogIn />
           </Route>
 
         </Switch>
