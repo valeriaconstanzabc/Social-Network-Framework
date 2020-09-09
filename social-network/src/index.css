@@ -1,0 +1,107 @@
+/* <---------------IMPORT VARIABLES---------------> */
+/* <---------------FONTS------------------------------> */
+/* <--------------COLORS------------------------------> */
+/* <--------------SHADOWS-----------------------------> */
+/* <--------------BUTTONS-----------------------------> */
+.logInButton {
+  font-family: "Actor", sans-serif;
+  font-size: 16px;
+  color: white;
+  border: 3px;
+  background: #4080FF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  cursor: pointer; }
+
+/* <---------------IMPORT COMPONENTS--------------> */
+.containerHeader {
+  width: 100%;
+  margin-top: 18px; }
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0px 70px 0px 70px; }
+
+.headerLogo {
+  display: flex;
+  justify-content: flex-end;
+  width: 53%; }
+
+.logoHeader {
+  height: 55px; }
+
+.divLogInButton {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%; }
+
+.logInButton {
+  width: 110px;
+  height: 35px; }
+
+/* <---------------------MEDIA QUERY---------------------> */
+@media all and (max-width: 600px) {
+  .header {
+    padding: 0px 40px 0px 40px; } }
+
+@media all and (max-width: 410px) {
+  .logInButton {
+    font-size: 16px;
+    width: 100%; }
+  .header {
+    padding: 0px 20px 0px 20px; } }
+
+/* <---------------IMPORT PAGES-------------------> */
+.welcomeLofche {
+  width: 100%;
+  padding: 0px 70px 0px 70px;
+  box-sizing: border-box; }
+
+.logoWelcome {
+  width: 350px; }
+
+.containerWelcome {
+  font-family: "Comfortaa", cursive;
+  color: white;
+  width: 450px;
+  font-size: 21px;
+  line-height: 33px;
+  padding-left: 5px; }
+
+/* <---------------------MEDIA QUERY---------------------> */
+@media all and (max-width: 600px) {
+  .welcomeLofche {
+    padding: 0px 40px 0px 40px; }
+  .logoWelcome {
+    width: 300px; }
+  .containerWelcome {
+    width: 310px;
+    font-size: 20px; } }
+
+@media all and (max-width: 410px) {
+  .logoWelcome {
+    width: 230px; }
+  .containerWelcome {
+    width: 230px;
+    font-size: 19px; } }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/FondoGrande.jpg");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: auto; }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; }

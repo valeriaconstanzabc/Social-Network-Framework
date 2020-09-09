@@ -1,11 +1,11 @@
 /* <---------------IMPORT VARIABLES---------------> */
-@import "./Views/Styles/Variables.scss";
+@import "./Views/Styles/_Variables.scss";
 
 /* <---------------IMPORT COMPONENTS--------------> */
-@import "./Views/Styles/Components/Header.scss";
+@import "./Views/Styles/Components/_Header.scss";
 
 /* <---------------IMPORT PAGES-------------------> */
-@import "./Views/Styles/Pages/Welcome.scss";
+@import "./Views/Styles/Pages/_Welcome.scss";
 
 body {
   margin: 0;

@@ -3,8 +3,8 @@ $Font1: 'Comfortaa', cursive;
 $Font2: 'Actor', sans-serif;
 
 /* <--------------COLORS------------------------------> */
-$ColorButton1: #4080FF;
 $Color1: white;
+$Color2: #4080FF;
 
 /* <--------------SHADOWS-----------------------------> */
 $ShadowButton1: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -15,7 +15,7 @@ $ShadowButton1: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 16px;
     color: $Color1;
     border: 3px;
-    background: $ColorButton1;
+    background: $Color2;
     box-shadow: $ShadowButton1;
     border-radius: 6px;
     cursor: pointer;
