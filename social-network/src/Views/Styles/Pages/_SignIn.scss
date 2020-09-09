@@ -1,0 +1,76 @@
+.containerSignIn{
+    display: flex;
+    justify-content: center;
+    
+    // background-image: url("imagenes/FondoSinVentanas.png");
+    // background-position: center center;
+    // background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-size: cover;
+}
+    .modalSignIn{
+        @extend %Modal-LogAndSign;
+        margin-bottom: 120px;
+    }
+        .name , .email , .password , .district{
+            @extend %Input-blue;
+            margin: 8px 0;
+        }
+
+        .textRegisterWith{
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .btngoogle, .btnFacebook{
+            @extend %Img-button;
+            margin: 0px 7px 15px 7px;
+        }
+            .social-media-logo{
+                height: 50px;  
+            }
+        #btnRegister{
+            @extend %Button-blue;
+            width: 100%;
+            height: 30px;
+        }
+
+#modalSignInRedirecting{
+        display: flex;
+        // flex-direction: column;
+        // width: 250px;
+        // height: 300px;
+        // padding: 25px;
+        // margin-top: 120px;
+        // font-family: 'Comfortaa', cursive;
+        // color: #24255E;
+        // font-size: 18px;
+        // background: rgba(255, 255, 255, 0.95);
+        // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        // border-radius: 10px;
+        // text-align: center;
+        // padding-top: 80px;
+        // line-height: 30px;
+}
+#btnRedirecting{
+        position: relative;
+        // font-family: 'Actor', sans-serif;
+        // color:white;
+        // height: 30px;
+        // border: 3px;
+        // background: #4080FF;
+        // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        // border-radius: 6px;
+        // margin-top: 40px;
+        // margin-bottom: 25px;
+        // cursor: pointer;
+}
+    .eyePassword{
+        width: 25px;
+    }
+
+/* <---------------------MEDIA QUERY---------------------> */
+@media all and (max-width: 410px){
+    .modalSignIn{ width: 220px; }
+    #btnRegister{ width: 220px; }
+}

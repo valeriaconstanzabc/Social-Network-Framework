@@ -9,18 +9,7 @@
     // background-size: cover;
 }
     .modalLogIn{
-        display: flex;
-        flex-direction: column;
-        width: 310px;
-        padding: 25px;
-        margin: 50px 0px 50px 0px;
-        font-family: $Font1;
-        color: $Color3;
-        font-size: 14px;
-        background: $Color4;
-        box-shadow: $ShadowButton1;
-        border-radius: 10px;
-        text-align: center;
+        @extend %Modal-LogAndSign;
     }
     .modalLogIn h1{
         margin: 35px 0px 9px 0px;
