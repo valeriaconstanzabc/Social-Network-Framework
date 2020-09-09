@@ -141,6 +141,11 @@
   margin-bottom: 5px;
   text-align: left; }
 
+.error {
+  font-size: 13px;
+  color: #ff3a3a;
+  font-weight: bold; }
+
 #next_button {
   width: 310px;
   height: 40px;

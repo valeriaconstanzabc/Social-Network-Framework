@@ -1,26 +1,107 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { auth } from '../../firebase.js';
+import { hiddenPassword } from '../Components/Function.js';
+import { observer } from '../Components/Function.js';
 
 const LogIn = () => {
+
+    const [email, setEmail] = React.useState('')
+    const [pass, setPass] = React.useState('')
+    const [error, setError] = React.useState(null)
+
+    const processData = (e) => {
+        e.preventDefault()
+        if(!email.trim() || !pass.trim()){
+            setError('* Ingrese email')
+            return
+        }
+        if(!pass.trim()){
+            setError('* Ingrese contraseña')
+            return
+        }
+        if(pass.length < 6){
+            setError('* Contraseña incorrecta')
+            return
+        }
+        console.log('Pasando todas las validaciones...')
+        setError(null)
+        observer()
+        userLogin()
+    }
+
+    const userLogin = React.useCallback(async () => {
+        try {
+            const res = await auth.signInWithEmailAndPassword(email, pass)
+            console.log(res.user)
+            setEmail('')
+            setPass('')
+            setError(null)
+        } catch (error) {
+            console.log(error)
+            if (error.code === 'auth/invalid-email') {
+                setError('* Email no válido')
+            }
+            if (error.code === 'auth/user-not-found') {
+                setError('* Email no registrado')
+            }
+            if (error.code === 'auth/wrong-password') {
+                setError('* Contraseña incorrecta')
+            }
+        }
+    }, [email, pass])
+
+
+    // const observer = () => {
+    //     auth.onAuthStateChanged((user) => {
+    //         if (user) {
+    //             console.log('existe usuario activo');
+    //             props.history.push('/home')
+    //             console.log('*******************');
+    //             console.log(user.emailVerified);
+    //             console.log('*******************');
+    //         } else {
+    //             //    User is signed out.
+    //             console.log('no existe usuario activo');
+    //         }
+    //     });
+    // }
+    
+
     return (
         <div className="containerLogIn">
-            <form>
+            <form onSubmit={processData}>
                 <div className="modalLogIn">
                     <h1>Iniciar Sesión</h1>
                     <div className="line"></div>
                 
-                    <label for="email" className="text"><b>Correo Electrónico</b></label>
-                    <input type="text" className="email_login" placeholder="lofche@example.com" name="email" required/>
+                    <label htmlFor="email" className="text"><b>Correo Electrónico</b></label>
+                    <input 
+                        type="text" 
+                        className="email_login" 
+                        placeholder="lofche@example.com" 
+                        name="email" 
+                        onChange={ e => setEmail(e.target.value) }
+                        value={email}
+                    />
                 
-                    <label for="psw" className="text"><b>Contraseña</b></label>
+                    <label htmlFor="psw" className="text"><b>Contraseña</b></label>
                     <div className="containerPassword">
-                        <input type="password" id="password_login" className="password" placeholder="Ingresa Contraseña" name="psw" required/>
-                        <span type="button" className="passwordHidden"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/ojo.png" className="eyePassword"/></span>
+                        <input 
+                            type="password" 
+                            id="password_login" 
+                            className="password" 
+                            placeholder="Ingresa Contraseña" 
+                            name="psw" 
+                            onChange={ e => setPass(e.target.value) }
+                            value={pass}
+                        />
+                        <span type="button" className="passwordHidden" onClick={() => hiddenPassword()}><img alt="ojo" src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/ojo.png" className="eyePassword"/></span>
                     </div>
                     
-                    <div className="error" id="errorMessage"></div>
+                    {error && (<div className="error" id="errorMessage">{error}</div>)}
                     <div className="buttonNext">
-                        <button type="button" id="next_button" className="next">Siguiente</button>
+                        <button type="submit" id="next_button" className="next">Siguiente</button>
                     </div>
                     <label>¿No tienes cuenta?</label>
                     <Link to="/registro">

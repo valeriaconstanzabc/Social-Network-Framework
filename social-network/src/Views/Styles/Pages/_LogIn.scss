@@ -47,6 +47,11 @@
         margin-bottom: 5px;
         text-align: left;
     }
+    .error{
+        font-size: 13px;
+        color: $Color7;
+        font-weight: bold;
+    }
     #next_button{
         @extend %Button-blue;
         width: 310px;
