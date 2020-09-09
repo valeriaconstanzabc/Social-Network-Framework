@@ -144,7 +144,8 @@
 .error {
   font-size: 13px;
   color: #ff3a3a;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-top: 5px; }
 
 #next_button {
   width: 310px;

@@ -1,10 +1,11 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { auth } from '../../firebase.js';
 import { hiddenPassword } from '../Components/Function.js';
 import { observer } from '../Components/Function.js';
 
-const LogIn = () => {
+const LogIn = (props) => {
 
     const [email, setEmail] = React.useState('')
     const [pass, setPass] = React.useState('')
@@ -37,6 +38,7 @@ const LogIn = () => {
             setEmail('')
             setPass('')
             setError(null)
+            props.history.push('/inicio')
         } catch (error) {
             console.log(error)
             if (error.code === 'auth/invalid-email') {
@@ -49,24 +51,8 @@ const LogIn = () => {
                 setError('* Contraseña incorrecta')
             }
         }
-    }, [email, pass])
-
-
-    // const observer = () => {
-    //     auth.onAuthStateChanged((user) => {
-    //         if (user) {
-    //             console.log('existe usuario activo');
-    //             props.history.push('/home')
-    //             console.log('*******************');
-    //             console.log(user.emailVerified);
-    //             console.log('*******************');
-    //         } else {
-    //             //    User is signed out.
-    //             console.log('no existe usuario activo');
-    //         }
-    //     });
-    // }
-    
+    }, [email, pass, props.history])
+ 
 
     return (
         <div className="containerLogIn">
@@ -92,7 +78,8 @@ const LogIn = () => {
                             id="password_login" 
                             className="password" 
                             placeholder="Ingresa Contraseña" 
-                            name="psw" 
+                            name="password" 
+                            autoComplete="on"
                             onChange={ e => setPass(e.target.value) }
                             value={pass}
                         />
@@ -113,4 +100,4 @@ const LogIn = () => {
     )
 }
 
-export default LogIn
+export default withRouter(LogIn)

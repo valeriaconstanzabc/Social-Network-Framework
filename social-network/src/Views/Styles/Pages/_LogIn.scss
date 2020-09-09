@@ -51,6 +51,7 @@
         font-size: 13px;
         color: $Color7;
         font-weight: bold;
+        margin-top: 5px;
     }
     #next_button{
         @extend %Button-blue;
