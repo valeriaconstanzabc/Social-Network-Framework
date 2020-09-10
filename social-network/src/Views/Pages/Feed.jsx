@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../Context/UseContext.js'
 
 const Feed = () => {
 
-    const [publication, setPublication] = React.useState('')
+    let { publication, setPublication, publicationfeed, cancel } = useContext(UserContext)
 
-    const publicationfeed = (e) => {
-        e.preventDefault()
-        if(!publication.trim()){
-            return
-        }
-        setPublication('')
-        
-    }
-    
-    const cancel = () => {
-        setPublication('')
-    }
+    // const [publication, setPublication] = React.useState('')
+
+    // const publicationfeed = (e) => {
+    //     e.preventDefault()
+    //     if(!publication.trim()){
+    //         return
+    //     }
+    //     setPublication('')
+    // }
+
+    // const cancel = () => {
+    //     setPublication('')
+    // }
     
 
     return (

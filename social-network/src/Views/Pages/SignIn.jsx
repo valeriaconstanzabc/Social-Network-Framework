@@ -12,20 +12,24 @@ const SignIn = (props) => {
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
 
-    const observer = () => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.log('existe usuario activo');
-                console.log('*******************');
-                console.log(user.emailVerified);
-                console.log('*******************');
-                props.history.push('/inicio')
-            } else {
-                //    User is signed out.
-                console.log('no existe usuario activo');
-            }
-        });
-    }
+    const observer = React.useCallback(async () => {
+        try {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    console.log('existe usuario activo');
+                    console.log('*******************');
+                    console.log(user.emailVerified);
+                    console.log('*******************');
+                    props.history.push('/inicio')
+                } else {
+                    //    User is signed out.
+                    console.log('no existe usuario activo');
+                }
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }, [props.history])
 
     const processData = e => {
         e.preventDefault()
@@ -77,7 +81,7 @@ const SignIn = (props) => {
                 return
             }
         }
-    }, [email, pass, name, district, props.history])
+    }, [email, pass, name, observer])
 
     const loginWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();

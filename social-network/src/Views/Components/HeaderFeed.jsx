@@ -52,7 +52,7 @@ const HeaderFeed = (props) => {
             <div className="headerPerfilButton">
             {
                 user && (
-                    <img type ="button" className="btnHeaderOptions" src={user.photoURL}/>
+                    <img type ="button" className="btnHeaderOptions" alt="imagen de usuario" src={user.photoURL}/>
                 )
             }
                 <div className="dropdownContent">

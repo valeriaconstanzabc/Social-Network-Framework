@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import {auth } from '../src/firebase.js'
+import { UserProvider } from './Views/Context/UseContext.js'
 
 import Welcome from './Views/Pages/Welcome';
 import HeaderWelcome from './Views/Components/HeaderWelcome';
@@ -48,10 +49,12 @@ function App() {
             <SignIn />
           </Route>
 
-          <Route path="/inicio">
-            <HeaderFeed />
-            <Feed />
-          </Route>
+          <UserProvider>
+            <Route path="/inicio">
+              <HeaderFeed />
+              <Feed />
+            </Route>
+          </UserProvider>
 
         </Switch>
         <Footer />
