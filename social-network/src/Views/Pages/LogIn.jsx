@@ -3,13 +3,28 @@ import { withRouter } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { auth } from '../../firebase.js';
 import { hiddenPassword } from '../Components/Function.js';
-import { observer } from '../Components/Function.js';
+import firebase from 'firebase/app'
 
 const LogIn = (props) => {
 
     const [email, setEmail] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
+
+    const observer = () => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                console.log('existe usuario activo');
+                console.log('*******************');
+                console.log(user.emailVerified);
+                console.log('*******************');
+                props.history.push('/inicio')
+            } else {
+                //    User is signed out.
+                console.log('no existe usuario activo');
+            }
+        });
+    }
 
     const processData = (e) => {
         e.preventDefault()
@@ -53,6 +68,20 @@ const LogIn = (props) => {
         }
     }, [email, pass, props.history])
  
+    const loginWithGoogle = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            observer()
+        }).catch(function (error) { });
+    }
+    const loginWithFacebook = () => {
+        const provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            observer()
+        }).catch(function (error) { });
+    }
 
     return (
         <div className="containerLogIn">
@@ -87,6 +116,14 @@ const LogIn = (props) => {
                     </div>
                     
                     {error && (<div className="error" id="errorMessage">{error}</div>)}
+                    <div className="registerWith">
+                        <button type="submit" className="btngoogle" onClick={() => loginWithGoogle()}>
+                            <img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/google.png" alt="google" className="social-media-logo" id="google"/>
+                        </button>
+                        <button type="submit" className="btnFacebook" onClick={() => loginWithFacebook()}>
+                            <img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/facebook.png" alt="facebook" className="social-media-logo" id="facebook"/>
+                        </button>
+                    </div>
                     <div className="buttonNext">
                         <button type="submit" id="next_button" className="next">Siguiente</button>
                     </div>

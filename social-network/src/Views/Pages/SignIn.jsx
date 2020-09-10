@@ -1,9 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-// import { loginWithGoogle, loginWithFacebook } from '../Components/Function.js';
 import { hiddenPassword } from '../Components/Function.js';
 import { auth, db } from '../../firebase.js'
-import { observer } from '../Components/Function.js';
 import firebase from 'firebase/app'
 
 const SignIn = (props) => {
@@ -13,6 +11,21 @@ const SignIn = (props) => {
     const [district, setDistrict] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
+
+    const observer = () => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                console.log('existe usuario activo');
+                console.log('*******************');
+                console.log(user.emailVerified);
+                console.log('*******************');
+                props.history.push('/inicio')
+            } else {
+                //    User is signed out.
+                console.log('no existe usuario activo');
+            }
+        });
+    }
 
     const processData = e => {
         e.preventDefault()
@@ -32,7 +45,6 @@ const SignIn = (props) => {
             setError('* Debe ser mayor a 6 carácteres')
             return
         }
-
         console.log('Pasando todas las validaciones')
         setError(null)
         register()
@@ -51,38 +63,35 @@ const SignIn = (props) => {
             setName('')
             setEmail('')
             setPass('')
+            setDistrict('')
             setError(null)
             observer()
-            props.history.push('/inicio')
         } catch (error) {
             console.log(error)
             if (error.code === 'auth/invalid-email') {
                 setError('* El email ingresado no es válido')
+                return
             }
             if (error.code === 'auth/email-already-in-use') {
                 setError('* El email ya ha sido utilizado')
+                return
             }
         }
-    }, [email, pass, name, props])
+    }, [email, pass, name, district, props.history])
 
     const loginWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
         .then((result) => {
-            const user = result.user;
-            console.log('user', user);
             observer()
-            props.history.push('/inicio')
-        }).catch(function (error) {
-        });
+        }).catch(function (error) { });
     }
     const loginWithFacebook = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
         .then((result) => {
             observer()
-        }).catch(function (error) {
-        });
+        }).catch(function (error) { });
     }
 
     return (

@@ -34,7 +34,7 @@
   flex-direction: column;
   width: 310px;
   padding: 25px;
-  margin: 50px 0px 50px 0px;
+  margin: 125px 0px 60px 0px;
   font-family: "Comfortaa", cursive;
   color: #24255E;
   font-size: 14px;
@@ -46,7 +46,8 @@
 /* <---------------IMPORT COMPONENTS--------------> */
 .containerHeader {
   width: 100%;
-  margin-top: 18px; }
+  margin-top: 18px;
+  position: fixed; }
 
 .header {
   display: flex;
@@ -235,7 +236,8 @@
 
 .containerPassword {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  margin-bottom: 25px; }
 
 .eyePassword {
   cursor: pointer; }
@@ -257,7 +259,7 @@
 #next_button {
   width: 310px;
   height: 40px;
-  margin: 40px 0px 25px 0px; }
+  margin: 20px 0px 25px 0px; }
 
 .registerHere {
   cursor: pointer;
