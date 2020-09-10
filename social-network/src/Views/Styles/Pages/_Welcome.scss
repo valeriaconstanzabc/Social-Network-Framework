@@ -1,6 +1,6 @@
 .welcomeLofche{
     width: 100%;
-    padding: 0px 70px 0px 70px;
+    padding: 76px 70px 0px 70px;
     box-sizing: border-box;
 }
 .logoWelcome{
@@ -17,21 +17,15 @@
 
 /* <---------------------MEDIA QUERY---------------------> */
 @media all and (max-width: 600px){
-    .welcomeLofche{
-        padding: 0px 40px 0px 40px;
-    }
-    .logoWelcome{
-        width: 300px;
-    }
+    .welcomeLofche{ padding: 76px 40px 0px 40px;}
+    .logoWelcome{ width: 300px; }
     .containerWelcome{
         width: 310px;
         font-size: 20px;
     }
 }
 @media all and (max-width: 410px){
-    .logoWelcome{
-        width: 230px;
-    }
+    .logoWelcome{ width: 230px; }
     .containerWelcome{
         width: 230px;
         font-size: 19px;
