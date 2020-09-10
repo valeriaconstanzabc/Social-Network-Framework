@@ -60,3 +60,14 @@ $ShadowButton2: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   text-align: center;
 }
+%Publication-Feed {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px 25px 25px;
+  font-family: $Font1;
+  color: $Color3;
+  font-size: 14px;
+  background: $Color4;
+  box-shadow: $ShadowButton1;
+  border-radius: 10px;
+}

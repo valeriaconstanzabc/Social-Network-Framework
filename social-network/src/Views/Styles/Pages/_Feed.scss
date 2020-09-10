@@ -1,0 +1,175 @@
+.containerLofche{
+    display: flex;
+    justify-content: center;
+
+//     background-image: url("imagenes/FondoSinVentanas.png");
+//     background-position: center center;
+//     background-repeat: no-repeat;
+//     background-attachment: fixed;
+//     background-size: cover;
+}
+    .feedLofche{
+        padding: 0px 25px 25px 25px;
+        margin-top: 125px;
+    }
+    .publicationFeed{
+        @extend %Publication-Feed;
+    }
+        .textPublication{
+            @extend %Input-blue;
+            width: 500px;
+            padding: 30px;
+            margin: 8px 0;
+        }
+    
+        .butonsPublication{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+        }
+            // #buttonSave, #cancelEditCrud,
+            #btnPublish, #btnCancel {
+                @extend %Button-blue;
+                width: 105px;
+                height: 30px;
+            }
+
+// #containerPublication{
+//     display: flex;
+//     flex-direction: column;
+//     padding: 25px;
+//     margin: 20px;
+//     font-family: 'Comfortaa', cursive;
+//     color: #24255E;
+//     font-size: 13px;
+//     background: rgba(255, 255, 255, 0.95);
+//     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//     border-radius: 10px;
+// }
+//     #crudContainer{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: flex-end;
+
+//         -webkit-order: 0;
+//         -ms-flex-order: 0;
+//         order: 0;
+//         -webkit-flex: 0 1 auto;
+//         -ms-flex: 0 1 auto;
+//         flex: 0 1 auto;
+//         -webkit-align-self: auto;
+//         -ms-flex-item-align: auto;
+//         align-self: auto;
+//     }
+//         #btnCrudOptions{
+//             border: 0px;
+//             background-color: Transparent;
+//             cursor: pointer;
+//         }
+//             .dropdownContentEdit {
+//                 display: none;
+//                 position: absolute;
+//                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//                 z-index: 1;
+//                 background-color: #749ef0;
+//                 border-radius: 6px;
+//             }
+//             .dropdownContentEdit button {
+//                 padding: 12px 16px;
+//                 display: block;
+//                 cursor: pointer;
+//                 font-family: 'Actor', sans-serif;
+//                 color: white;
+//                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+//                 font-size: 15px;
+//                 border-radius: 6px;
+//                 border: 0px;
+//                 background-color: Transparent;
+//             }
+//             /* Change color of dropdown links on hover */
+//             .dropdownContentEdit button:hover {background-color: #ee8078;}
+                        
+//             /* Show the dropdown menu on hover */
+//             #crudContainer:hover .dropdownContentEdit {display: block;}
+
+//     .textBoxStyle{
+//         display: flex;
+//         flex-direction: column;
+//     }
+//         #containerNameAndEdit{
+//             display: flex;
+//             justify-content: space-between;
+//         }
+//             .namePublication{
+//                 font-size: 24px;
+//                 margin-bottom: 10px;
+
+//                 -webkit-order: 0;
+//                 -ms-flex-order: 0;
+//                 order: 0;
+//                 -webkit-flex: 1 1 auto;
+//                 -ms-flex: 1 1 auto;
+//                 flex: 1 1 auto;
+//                 -webkit-align-self: auto;
+//                 -ms-flex-item-align: auto;
+//                 align-self: auto; 
+//             }
+//             .edit{
+//                 display: flex;
+//                 flex-direction: column;
+//                 margin-top: 10px;
+//                 text-align: justify;
+//             }
+//             #postEditCrud{
+//                 width: 100%;
+//                 padding: 5px 15px 15px 15px;
+//                 box-sizing: border-box;
+//                 border: 2px solid #212157;
+//                 border-radius: 10px;
+//                 font-family: 'Comfortaa', cursive;
+//                 color: #24255E;
+//                 font-size: 13px;
+//             }
+//             #buttonsSaveAndEdit{
+//                 display: flex;
+//                 justify-content: space-between;
+//                 padding-top: 20px;
+//             }
+
+//             .reactions{
+//                 display: flex;
+//                 background: rgba(233, 113, 104, 0.5);
+//                 border-radius: 10px;
+//                 width: 50px;
+//                 height: 27px;
+//                 justify-content: center;
+//                 align-items: center;
+//                 margin-top: 15px;
+//             }
+//             .imgOptionsDots{
+//                 width: 23px;        
+//             }
+//             .btnLike{
+//                 display: flex;
+//                 margin-left: 3px;
+//                 border: 0;
+//                 cursor: pointer;
+//                 background:none;
+//                 justify-content: center;
+//                 align-items: center;
+//             }
+//             .likesContainer{
+//                 display: flex;
+//                 justify-content: center;
+//                 align-items: center;
+//                 padding-left: 5px;
+//             }
+
+/* <---------------------MEDIA QUERY---------------------> */
+@media all and (max-width: 600px){
+    .textPublication{ width: 350px }
+}
+@media all and (max-width: 445px){
+    .textPublication{ width: 100%; }
+}

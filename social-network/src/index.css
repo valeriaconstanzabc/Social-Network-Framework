@@ -4,7 +4,7 @@
 /* <--------------COLORS------------------------------> */
 /* <--------------SHADOWS-----------------------------> */
 /* <--------------BUTTONS-----------------------------> */
-.logInButton, #next_button, #btnRegister {
+.logInButton, #next_button, #btnRegister, #btnPublish, #btnCancel {
   font-family: "Actor", sans-serif;
   font-size: 16px;
   color: white;
@@ -20,7 +20,7 @@
   cursor: pointer; }
 
 /* <--------------INPUTS------------------------------> */
-.email_login, #password_login, .name, .email, .password, .district {
+.email_login, #password_login, .name, .email, .password, .district, .textPublication {
   width: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -42,6 +42,17 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   text-align: center; }
+
+.publicationFeed {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px 25px 25px;
+  font-family: "Comfortaa", cursive;
+  color: #24255E;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px; }
 
 /* <---------------IMPORT COMPONENTS--------------> */
 .containerHeader {
@@ -77,6 +88,7 @@
 
 /* <---------------------HEADER FEED---------------------> */
 .headerFeed {
+  position: fixed;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -311,6 +323,38 @@
     width: 220px; }
   #btnRegister {
     width: 220px; } }
+
+.containerLofche {
+  display: flex;
+  justify-content: center; }
+
+.feedLofche {
+  padding: 0px 25px 25px 25px;
+  margin-top: 125px; }
+
+.textPublication {
+  width: 500px;
+  padding: 30px;
+  margin: 8px 0; }
+
+.butonsPublication {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px; }
+
+#btnPublish, #btnCancel {
+  width: 105px;
+  height: 30px; }
+
+/* <---------------------MEDIA QUERY---------------------> */
+@media all and (max-width: 600px) {
+  .textPublication {
+    width: 350px; } }
+
+@media all and (max-width: 445px) {
+  .textPublication {
+    width: 100%; } }
 
 body {
   margin: 0;
