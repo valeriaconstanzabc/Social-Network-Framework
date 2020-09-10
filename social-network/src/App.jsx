@@ -4,15 +4,30 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-// import "./Views/Styles/Styles.scss"
 import Welcome from './Views/Pages/Welcome';
 import HeaderWelcome from './Views/Components/HeaderWelcome';
 import LogIn from './Views/Pages/LogIn';
 import Footer from './Views/Components/Footer';
 import SignIn from './Views/Pages/SignIn';
+import HeaderFeed from './Views/Components/HeaderFeed';
+import {auth } from '../src/firebase.js'
 
 function App() {
-  return (
+
+  const [firebaseUser, setFirebaseUser] = React.useState(false)
+
+  React.useEffect(() => {
+      auth.onAuthStateChanged(user => {
+          console.log(user)
+          if(user){
+              setFirebaseUser(user)
+          }else{
+              setFirebaseUser(null)
+          }
+      })
+  }, [])
+
+  return firebaseUser !== false ?(
       <Router>
         <Switch>
           
@@ -31,10 +46,16 @@ function App() {
             <SignIn />
           </Route>
 
+          <Route path="/inicio">
+            <HeaderFeed />
+          </Route>
+
         </Switch>
         <Footer />
       </Router>
-  );
+  ):(
+    <div>Cargando...</div>
+  )
 }
 
 export default App;

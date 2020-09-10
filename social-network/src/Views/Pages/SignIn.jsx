@@ -1,6 +1,10 @@
 import React from 'react'
-import { loginWithGoogle, loginWithFacebook } from '../Components/Function.js';
+import { withRouter } from 'react-router-dom'
+// import { loginWithGoogle, loginWithFacebook } from '../Components/Function.js';
+import { hiddenPassword } from '../Components/Function.js';
 import { auth, db } from '../../firebase.js'
+import { observer } from '../Components/Function.js';
+import firebase from 'firebase/app'
 
 const SignIn = (props) => {
 
@@ -48,7 +52,8 @@ const SignIn = (props) => {
             setEmail('')
             setPass('')
             setError(null)
-            props.history.push('/home')
+            observer()
+            props.history.push('/inicio')
         } catch (error) {
             console.log(error)
             if (error.code === 'auth/invalid-email') {
@@ -59,6 +64,26 @@ const SignIn = (props) => {
             }
         }
     }, [email, pass, name, props])
+
+    const loginWithGoogle = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            const user = result.user;
+            console.log('user', user);
+            observer()
+            props.history.push('/inicio')
+        }).catch(function (error) {
+        });
+    }
+    const loginWithFacebook = () => {
+        const provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            observer()
+        }).catch(function (error) {
+        });
+    }
 
     return (
         <div className="containerSignIn">
@@ -111,7 +136,7 @@ const SignIn = (props) => {
                         autoComplete="on"
                         required
                     />
-                    <span type="button" className="passwordHidden"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/ojo.png" className="eyePassword" alt="ojo"/></span>
+                    <span  type="button" className="passwordHidden" onClick={() => hiddenPassword()}><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/ojo.png" className="eyePassword" alt="ojo"/></span>
                 </div>
                 
                 {error && (<div className="error" id="errorMessage">{error}</div>)}
@@ -133,4 +158,4 @@ const SignIn = (props) => {
     )
 }
 
-export default SignIn
+export default withRouter(SignIn)

@@ -1,5 +1,5 @@
 import { auth } from '../../firebase.js';
-import firebase from 'firebase/app'
+
 
 export const hiddenPassword = () => {
     const x = document.querySelector('.password');
@@ -24,21 +24,3 @@ export const observer = () => {
     });
 }
 
-export const loginWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-    .then((result) => {
-        const user = result.user;
-        console.log('user', user);
-        observer()
-    }).catch(function (error) {
-    });
-}
-export const loginWithFacebook = () => {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-    .then((result) => {
-        observer()
-    }).catch(function (error) {
-    });
-}
