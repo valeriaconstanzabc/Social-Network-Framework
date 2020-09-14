@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../Context/UseContext.js'
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import {auth} from '../../firebase.js'
 
 
 const HeaderFeed = (props) => {
-    
-    const [user, setUser] = React.useState(null)
+
+    let { user, setUser } = useContext(UserContext)
 
     const cerrarSesion = () => {
         auth.signOut()
@@ -25,7 +26,7 @@ const HeaderFeed = (props) => {
             console.log('no existe')
             props.history.push('/iniciarSesion')
         }
-    }, [props.history])
+    }, [props.history, setUser])
 
     return (
         <div className="headerFeed">
