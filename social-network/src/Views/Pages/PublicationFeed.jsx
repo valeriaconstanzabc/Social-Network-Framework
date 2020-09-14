@@ -24,14 +24,14 @@ const PublicationFeed = () => {
 
 
     return (
-      <div>
+      <div className="containerPublicationFeed">
         {
           post.map(item => (
             <div key={item.id} className="containerPublication">
               <div className="containerNameAndEdit">
                 <span className="namePublication">{item.name || item.email}</span>
                 <div className="crudContainer">
-                  <button type ="button" className="btnCrudOptions"><img src="imagenes/dots1.png" alt="" className="imgOptionsDots"/></button>
+                  <button type ="button" className="btnCrudOptions"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/dots1.png" alt="imagen editar" className="imgOptionsDots"/></button>
                   <div className="dropdownContentEdit">
                     <button className="editCrud">Editar</button>
                     <button className="deleteCrud">Delete</button>  
@@ -40,7 +40,6 @@ const PublicationFeed = () => {
               </div>
 
               <div id="messagePostContainer" classna="textBoxStyle"> 
-                <span>{item.email}</span>
                 <span>{item.date}</span> 
                 <div className="edit">
                   <span className="currentText" type="text">{item.text}</span>
