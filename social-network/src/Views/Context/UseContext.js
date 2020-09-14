@@ -16,24 +16,24 @@ function UserProvider({ children }) {
     setPublication('')
   }
 
-    const publicationfeed = () => {
-      firebase.firestore().collection('Publicaciones').add({
-        date: new Date().toLocaleString(),
-        text: publication,
-        uid: userr.uid,
-        email: userr.email,
-        name: userr.displayName,
-        like: [],
-      })
-      .then((result) => { 
-        console.log('mensaje guardado', result)
-        if(!publication.trim()){
-          return
-        }
-        setPublication('')
-      })
-      .catch(error => console.log(error));
-    }
+  const publicationfeed = () => {
+    firebase.firestore().collection('Publicaciones').add({
+      date: new Date().toLocaleString(),
+      text: publication,
+      uid: userr.uid,
+      email: userr.email,
+      name: userr.displayName,
+      like: [],
+    })
+    .then((result) => { 
+      console.log('mensaje guardado', result)
+      if(!publication.trim()){
+        return
+      }
+      setPublication('')
+    })
+    .catch(error => console.log(error));
+  }
 
   return (
     <Provider value={{ publication, setPublication, publicationfeed,

@@ -18,8 +18,20 @@ const Feed = () => {
                         value={publication}
                     />
                     <div className="butonsPublication">
-                        <button type="button" id="btnCancel" className="btnCancel" onClick={() => cancel()}>Cancelar</button>
-                        <button type="button" id="btnPublish" className="btnPublish" onClick={() => publicationfeed()}>Publicar</button>
+                        <button 
+                            type="button" 
+                            id="btnCancel" 
+                            className="btnCancel" 
+                            onClick={() => cancel()}>
+                            Cancelar
+                        </button>
+                        <button 
+                            type="button" 
+                            id="btnPublish" 
+                            className="btnPublish" 
+                            onClick={() => publicationfeed()}>
+                            Publicar
+                        </button>
                     </div>
                 </form>
                 <div className="messagesContainer"></div>  

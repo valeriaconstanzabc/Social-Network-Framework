@@ -14,6 +14,7 @@ import Footer from './Views/Components/Footer';
 import SignIn from './Views/Pages/SignIn';
 import HeaderFeed from './Views/Components/HeaderFeed';
 import Feed from './Views/Pages/Feed';
+import PublicationFeed from './Views/Pages/PublicationFeed.jsx';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
             <Route path="/inicio">
               <HeaderFeed />
               <Feed />
+              <PublicationFeed />
             </Route>
           </UserProvider>
 
