@@ -399,17 +399,31 @@
 .crudContainer:hover .dropdownContentEdit {
   display: block; }
 
+.containerNameAndEdit {
+  display: flex;
+  justify-content: space-between; }
+
+.namePublication {
+  font-size: 25px;
+  margin-bottom: 10px; }
+
+.edit {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  text-align: justify; }
+
 .imgOptionsDots {
   width: 23px; }
 
 /* <---------------------MEDIA QUERY---------------------> */
 @media all and (max-width: 600px) {
-  .textPublication {
+  .publicationFeed, .containerPublication {
     width: 350px; } }
 
 @media all and (max-width: 445px) {
-  .textPublication {
-    width: 100%; } }
+  .publicationFeed, .containerPublication {
+    width: 300px; } }
 
 body {
   margin: 0;

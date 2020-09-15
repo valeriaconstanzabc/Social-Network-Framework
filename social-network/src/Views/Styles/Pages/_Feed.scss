@@ -90,49 +90,24 @@
             /* Show the dropdown menu on hover */
             .crudContainer:hover .dropdownContentEdit {display: block;}
 
-//     .textBoxStyle{
-//         display: flex;
-//         flex-direction: column;
-//     }
-//         #containerNameAndEdit{
-//             display: flex;
-//             justify-content: space-between;
-//         }
-//             .namePublication{
-//                 font-size: 24px;
-//                 margin-bottom: 10px;
-
-//                 -webkit-order: 0;
-//                 -ms-flex-order: 0;
-//                 order: 0;
-//                 -webkit-flex: 1 1 auto;
-//                 -ms-flex: 1 1 auto;
-//                 flex: 1 1 auto;
-//                 -webkit-align-self: auto;
-//                 -ms-flex-item-align: auto;
-//                 align-self: auto; 
-//             }
-//             .edit{
-//                 display: flex;
-//                 flex-direction: column;
-//                 margin-top: 10px;
-//                 text-align: justify;
-//             }
-//             #postEditCrud{
-//                 width: 100%;
-//                 padding: 5px 15px 15px 15px;
-//                 box-sizing: border-box;
-//                 border: 2px solid #212157;
-//                 border-radius: 10px;
-//                 font-family: 'Comfortaa', cursive;
-//                 color: #24255E;
-//                 font-size: 13px;
-//             }
-//             #buttonsSaveAndEdit{
-//                 display: flex;
-//                 justify-content: space-between;
-//                 padding-top: 20px;
-//             }
+    // .textBoxStyle{
+    //     display: flex;
+    //     flex-direction: column;
+    // }
+        .containerNameAndEdit{
+            display: flex;
+            justify-content: space-between;
+        }
+            .namePublication{
+                font-size: 25px;
+                margin-bottom: 10px;
+            }
+            .edit{
+                display: flex;
+                flex-direction: column;
+                margin-top: 10px;
+                text-align: justify;
+            }
 
 //             .reactions{
 //                 display: flex;
@@ -165,8 +140,14 @@
 
 /* <---------------------MEDIA QUERY---------------------> */
 @media all and (max-width: 600px){
-    .textPublication{ width: 350px }
+    .publicationFeed, .containerPublication{
+        width: 350px;
+    }
+    // .textPublication{ width: 350px }
 }
 @media all and (max-width: 445px){
-    .textPublication{ width: 100%; }
+    .publicationFeed, .containerPublication{
+        width: 300px;
+    }
+    // .textPublication{ width: 100%; }
 }
