@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../Context/UseContext.js'
 import firebase from 'firebase/app'
+import { auth } from '../../firebase.js'
 
 const PublicationFeed = () => {
 
-  const [post, setPost] = React.useState([])
+  let { post, setPost } = useContext(UserContext)
 
-    React.useEffect(() => {
+  const userr = auth.currentUser;
+    React.useEffect((query) => {
 
       const printPublication = async () => {
           const db = firebase.firestore()
@@ -13,15 +16,16 @@ const PublicationFeed = () => {
               const data = await db.collection('Publicaciones').get()
               const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
               console.log(arrayData)
-              setPost(arrayData)    
+              
+              setPost(arrayData)  
           } catch (error) {
               console.log(error)
           }
       }
       printPublication()
 
-    }, [])
-
+    }, [ setPost ])
+    post.sort()
 
     return (
       <div className="containerPublicationFeed">
@@ -29,14 +33,19 @@ const PublicationFeed = () => {
           post.map(item => (
             <div key={item.id} className="containerPublication">
               <div className="containerNameAndEdit">
-                <span className="namePublication">{item.name || item.email}</span>
-                <div className="crudContainer">
-                  <button type ="button" className="btnCrudOptions"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/dots1.png" alt="imagen editar" className="imgOptionsDots"/></button>
-                  <div className="dropdownContentEdit">
-                    <button className="editCrud">Editar</button>
-                    <button className="deleteCrud">Delete</button>  
+                  <span className="namePublication">{item.name || item.email}</span>
+              {
+                item.uid === userr.uid ?
+                  <div className="crudContainer">
+                    <button type ="button" className="btnCrudOptions"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/dots1.png" alt="imagen editar" className="imgOptionsDots"/></button>
+                    <div className="dropdownContentEdit">
+                      <button className="editCrud">Editar</button>
+                      <button className="deleteCrud">Delete</button>  
+                    </div>
                   </div>
-                </div>
+                :
+                <div className="containerNameAndEdit"></div>
+              }
               </div>
 
               <div id="messagePostContainer" classna="textBoxStyle"> 
@@ -47,12 +56,12 @@ const PublicationFeed = () => {
                 <div className="toAdd"></div>
               </div>
 
-              {/* <div className="reactions">
+              <div className="reactions">
                 <div className="likes">
-                  <button type ="button" className="btnLike"><img src="imagenes/heart.png" className="imgOptionsDots"/></button>
+                  <button type ="button" className="btnLike"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/heart.png" alt="like" className="imgOptionsDots"/></button>
                   <div className="likesContainer"></div>
                 </div>
-              </div> */}
+              </div>
             </div>
           ))
         }        

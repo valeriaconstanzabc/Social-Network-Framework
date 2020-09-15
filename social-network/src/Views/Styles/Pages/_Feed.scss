@@ -122,21 +122,19 @@
             .imgOptionsDots{
                 width: 23px;        
             }
-//             .btnLike{
-//                 display: flex;
-//                 margin-left: 3px;
-//                 border: 0;
-//                 cursor: pointer;
-//                 background:none;
-//                 justify-content: center;
-//                 align-items: center;
-//             }
-//             .likesContainer{
-//                 display: flex;
-//                 justify-content: center;
-//                 align-items: center;
-//                 padding-left: 5px;
-//             }
+            .btnLike{
+                @extend %Img-button;
+                display: flex;
+                margin-left: 3px;
+                justify-content: center;
+                align-items: center;
+            }
+            .likesContainer{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-left: 5px;
+            }
 
 /* <---------------------MEDIA QUERY---------------------> */
 @media all and (max-width: 600px){

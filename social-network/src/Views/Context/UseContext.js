@@ -9,6 +9,7 @@ function UserProvider({ children }) {
 
   const [user, setUser] = React.useState(null)
   const [publication, setPublication] = React.useState('')
+  const [post, setPost] = React.useState([])
 
   const userr = auth.currentUser;
 
@@ -16,28 +17,38 @@ function UserProvider({ children }) {
     setPublication('')
   }
 
-  const publicationfeed = () => {
-    firebase.firestore().collection('Publicaciones').add({
-      date: new Date().toLocaleString(),
-      text: publication,
-      uid: userr.uid,
-      email: userr.email,
-      name: userr.displayName,
-      like: [],
-    })
-    .then((result) => { 
-      console.log('mensaje guardado', result)
-      if(!publication.trim()){
-        return
+  const publicationfeed = async () => {
+
+    if(!publication.trim()){
+      return
+    }
+
+    try {
+      const db = firebase.firestore()
+      const newPublication = {
+        date: new Date().toLocaleString(),
+        text: publication,
+        uid: userr.uid,
+        email: userr.email,
+        name: userr.displayName,
+        like: [],
       }
+      const data = await db.collection('Publicaciones').add(newPublication)
+
+      setPost([
+        ...post,
+        {...newPublication, id: data.id}
+      ])
       setPublication('')
-    })
-    .catch(error => console.log(error));
+    }
+    catch (error){
+      console.log(error)
+    }
   }
 
   return (
     <Provider value={{ publication, setPublication, publicationfeed,
-        cancel, user, setUser
+        cancel, user, setUser, post, setPost
     }}>
       {children}
     </Provider>
