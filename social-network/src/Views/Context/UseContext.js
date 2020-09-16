@@ -46,9 +46,18 @@ function UserProvider({ children }) {
     }
   }
 
+  const deletePublication = async (id) => {
+    try {
+      const db = firebase.firestore()
+      await db.collection('Publicaciones').doc(id).delete()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <Provider value={{ publication, setPublication, publicationfeed,
-        cancel, user, setUser, post, setPost
+        cancel, user, setUser, post, setPost, deletePublication
     }}>
       {children}
     </Provider>

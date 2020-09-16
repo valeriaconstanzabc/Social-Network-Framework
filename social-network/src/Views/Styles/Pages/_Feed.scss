@@ -73,6 +73,7 @@
                 z-index: 1;
                 background-color: $Color9;
                 border-radius: 6px;
+                width: 120px;
             }
             .dropdownContentEdit button {
                 @extend %Img-button;
@@ -83,9 +84,11 @@
                 box-shadow: $ShadowButton2;
                 font-size: 15px;
                 border-radius: 6px;
+                width: 100%;
+                width: 120px;
             }
             /* Change color of dropdown links on hover */
-            .dropdownContentEdit button:hover {background-color: $Color8;}
+            .dropdownContentEdit button:hover {background-color: $Color8; width: 100%;}
                         
             /* Show the dropdown menu on hover */
             .crudContainer:hover .dropdownContentEdit {display: block;}

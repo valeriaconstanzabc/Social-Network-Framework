@@ -5,28 +5,26 @@ import { auth } from '../../firebase.js'
 
 const PublicationFeed = () => {
 
-  let { post, setPost } = useContext(UserContext)
+  let { post, setPost, deletePublication } = useContext(UserContext)
 
   const userr = auth.currentUser;
-    React.useEffect(() => {
 
-      const printPublication = async () => {
-          try {
-            const db = firebase.firestore()
-            await db.collection('Publicaciones').orderBy('date', 'desc').onSnapshot(
-                (snap => {
-                    const arrayData = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-                    console.log(arrayData)
-                    setPost(arrayData)  
-                }));
-        } catch (error) { 
-          console.log(error) 
-        }
+  React.useEffect(() => {
+    const printPublication = async () => {
+      try {
+        const db = firebase.firestore()
+        await db.collection('Publicaciones').orderBy('date', 'desc').onSnapshot(
+          (snap => {
+            const arrayData = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            console.log(arrayData)
+            setPost(arrayData)  
+          }));
+      } catch (error) { 
+        console.log(error) 
+      }
     }
-      printPublication()
-
-    }, [ setPost ])
-    post.sort()
+    printPublication()
+  }, [ setPost ])
 
     return (
       <div className="containerPublicationFeed">
@@ -41,7 +39,7 @@ const PublicationFeed = () => {
                     <button type ="button" className="btnCrudOptions"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/dots1.png" alt="imagen editar" className="imgOptionsDots"/></button>
                     <div className="dropdownContentEdit">
                       <button className="editCrud">Editar</button>
-                      <button className="deleteCrud">Delete</button>  
+                      <button className="deleteCrud" onClick={() => deletePublication(item.id)}>Delete</button>  
                     </div>
                   </div>
                 :
