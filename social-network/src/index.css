@@ -4,7 +4,7 @@
 /* <--------------COLORS------------------------------> */
 /* <--------------SHADOWS-----------------------------> */
 /* <--------------BUTTONS-----------------------------> */
-.logInButton, #next_button, #btnRegister, #btnPublish, #btnCancel {
+.logInButton, #next_button, #btnRegister, #btnPublish, #btnCancel, .buttonSave, .cancelEditCrud {
   font-family: "Actor", sans-serif;
   font-size: 16px;
   color: white;
@@ -21,7 +21,7 @@
   outline: none; }
 
 /* <--------------INPUTS------------------------------> */
-.email_login, #password_login, .name, .email, .password, .district, .textPublication {
+.email_login, #password_login, .name, .email, .password, .district, .textPublication, .postEditCrud {
   width: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -417,6 +417,19 @@
   flex-direction: column;
   margin-top: 10px;
   text-align: justify; }
+
+.postEditCrud {
+  font-family: "Comfortaa", cursive;
+  color: #24255E;
+  font-size: 13px; }
+
+.buttonsSaveAndEdit {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0px 10px 0px; }
+
+.buttonSave, .cancelEditCrud {
+  height: 30px; }
 
 .imgOptionsDots {
   width: 23px; }

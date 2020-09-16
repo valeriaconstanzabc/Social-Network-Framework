@@ -5,7 +5,7 @@ import { auth } from '../../firebase.js'
 
 const PublicationFeed = () => {
 
-  let { post, setPost, deletePublication } = useContext(UserContext)
+  let { post, setPost, deletePublication, editPublication, setEditPublication } = useContext(UserContext)
 
   const userr = auth.currentUser;
 
@@ -38,7 +38,7 @@ const PublicationFeed = () => {
                   <div className="crudContainer">
                     <button type ="button" className="btnCrudOptions"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/dots1.png" alt="imagen editar" className="imgOptionsDots"/></button>
                     <div className="dropdownContentEdit">
-                      <button className="editCrud">Editar</button>
+                      <button className="editCrud" onClick={() => setEditPublication(true)}>Editar</button>
                       <button className="deleteCrud" onClick={() => deletePublication(item.id)}>Delete</button>  
                     </div>
                   </div>
@@ -47,10 +47,25 @@ const PublicationFeed = () => {
               }
               </div>
 
-              <div id="messagePostContainer" classna="textBoxStyle"> 
+              <div id="messagePostContainer" className="textBoxStyle"> 
                 <span>{item.date}</span> 
                 <div className="edit">
-                  <span className="currentText" type="text">{item.text}</span>
+                  {
+                    editPublication === true && item.uid === userr.uid ?
+                    <div>
+                      <textarea className="postEditCrud">{item.text}</textarea>
+                      <div className="buttonsSaveAndEdit">
+                        <div>
+                          <button className="cancelEditCrud" onClick={() => setEditPublication(false)}>Cancelar</button>
+                        </div>
+                        <div>
+                          <button className="buttonSave">Guardar cambios</button>
+                        </div>
+                      </div>
+                    </div>
+                    :
+                    <span className="currentText" type="text">{item.text}</span>
+                  }
                 </div>
                 <div className="toAdd"></div>
               </div>

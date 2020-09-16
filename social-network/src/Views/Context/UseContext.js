@@ -10,6 +10,7 @@ function UserProvider({ children }) {
   const [user, setUser] = React.useState(null)
   const [publication, setPublication] = React.useState('')
   const [post, setPost] = React.useState([])
+  const [editPublication, setEditPublication] = React.useState(false)
 
   const userr = auth.currentUser;
 
@@ -57,7 +58,8 @@ function UserProvider({ children }) {
 
   return (
     <Provider value={{ publication, setPublication, publicationfeed,
-        cancel, user, setUser, post, setPost, deletePublication
+        cancel, user, setUser, post, setPost, deletePublication,
+        editPublication, setEditPublication
     }}>
       {children}
     </Provider>

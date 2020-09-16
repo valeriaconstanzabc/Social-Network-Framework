@@ -31,7 +31,6 @@
             align-items: center;
             padding-top: 10px;
         }
-            // #buttonSave, #cancelEditCrud,
             #btnPublish, #btnCancel {
                 @extend %Button-blue;
                 width: 105px;
@@ -110,6 +109,22 @@
                 flex-direction: column;
                 margin-top: 10px;
                 text-align: justify;
+            }
+            .postEditCrud{
+                @extend %Input-blue;
+                // padding: 5px 15px 15px 15px;
+                font-family: $Font1;
+                color: $Color3;
+                font-size: 13px;
+            }
+            .buttonsSaveAndEdit{
+                display: flex;
+                justify-content: space-between;
+                padding: 15px 0px 10px 0px;
+            }
+            .buttonSave, .cancelEditCrud {
+                @extend %Button-blue;
+                height: 30px;
             }
 
 //             .reactions{
