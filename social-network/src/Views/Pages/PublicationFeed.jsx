@@ -8,20 +8,21 @@ const PublicationFeed = () => {
   let { post, setPost } = useContext(UserContext)
 
   const userr = auth.currentUser;
-    React.useEffect((query) => {
+    React.useEffect(() => {
 
       const printPublication = async () => {
-          const db = firebase.firestore()
           try {
-              const data = await db.collection('Publicaciones').get()
-              const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
-              console.log(arrayData)
-              
-              setPost(arrayData)  
-          } catch (error) {
-              console.log(error)
-          }
-      }
+            const db = firebase.firestore()
+            await db.collection('Publicaciones').orderBy('date', 'desc').onSnapshot(
+                (snap => {
+                    const arrayData = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+                    console.log(arrayData)
+                    setPost(arrayData)  
+                }));
+        } catch (error) { 
+          console.log(error) 
+        }
+    }
       printPublication()
 
     }, [ setPost ])
