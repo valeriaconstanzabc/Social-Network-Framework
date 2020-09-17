@@ -15,6 +15,7 @@ function UserProvider({ children }) {
   const [newPublication, setNewPublication] = React.useState('')
 
   const userr = auth.currentUser;
+  const db = firebase.firestore()
 
   const cancel = () => {
     setPublication('')
@@ -71,11 +72,39 @@ function UserProvider({ children }) {
       console.log(err)
     }
   }
+
+  const like = (item) => {
+    try {
+      if (item.like === null || item.like === '') {
+        item.like = [];
+      }
+
+    if (item.like.includes(userr.email)) {
+      for (let i = 0; i < item.like.length; i++) {
+        if (item.like[i] === userr.email) { // verifica si ya el usuario está en el array
+          item.like.splice(i, 1); // sentencia para eliminar un elemento de un array
+
+          db.collection('Publicaciones').doc(item.id).update({ // para actualizar el array
+            like: item.like,
+          });
+        }
+      }
+    } else {
+      item.like.push(userr.email);
+      db.collection('Publicaciones').doc(item.id).update({
+        like: item.like,
+      });
+    }   
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Provider value={{ publication, setPublication, publicationfeed,
         cancel, user, setUser, post, setPost, deletePublication,
         editPublication, setEditPublication, saveEditPublication,
-        edit, id, setId, newPublication, setNewPublication
+        edit, id, setId, newPublication, setNewPublication, like
 
     }}>
       {children}

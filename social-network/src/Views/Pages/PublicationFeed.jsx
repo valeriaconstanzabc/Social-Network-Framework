@@ -7,14 +7,15 @@ const PublicationFeed = () => {
 
   let { post, setPost, deletePublication, editPublication, 
     setEditPublication, saveEditPublication, edit, 
-    setNewPublication } = useContext(UserContext)
+    setNewPublication, like } = useContext(UserContext)
 
   const userr = auth.currentUser;
+  const db = firebase.firestore()
 
   React.useEffect(() => {
     const printPublication = async () => {
       try {
-        const db = firebase.firestore()
+        
         await db.collection('Publicaciones').orderBy('date', 'desc').onSnapshot(
           (snap => {
             const arrayData = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -26,7 +27,7 @@ const PublicationFeed = () => {
       }
     }
     printPublication()
-  }, [ setPost ])
+  }, [ setPost, db ])
 
     return (
       <div className="containerPublicationFeed">
@@ -78,9 +79,9 @@ const PublicationFeed = () => {
               </div>
 
               <div className="reactions">
-                <div className="likes">
-                  <button type ="button" className="btnLike"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/heart.png" alt="like" className="imgOptionsDots"/></button>
-                  <div className="likesContainer"></div>
+                <div className="likesContainer">
+                  <span>{item.like.length}</span>
+                  <i onClick={() => like(item)}><button type ="button" className="btnLike"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/heart.png" alt="like" className="imgOptionsDots"/></button></i>
                 </div>
               </div>
             </div>

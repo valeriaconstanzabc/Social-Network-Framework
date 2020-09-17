@@ -7,7 +7,8 @@ import {auth} from '../../firebase.js'
 
 const HeaderFeed = (props) => {
 
-    let { user, setUser } = useContext(UserContext)
+    let { setUser } = useContext(UserContext)
+    const userr = auth.currentUser;
 
     const cerrarSesion = () => {
         auth.signOut()
@@ -52,9 +53,10 @@ const HeaderFeed = (props) => {
             </div> 
             <div className="headerPerfilButton">
             {
-                user && (
-                    <img type ="button" className="btnHeaderOptions" alt="imagen de usuario" src={user.photoURL}/>
-                )
+                userr.photoURL === null ?
+                <img type ="button" className="btnHeaderOptions" alt="img" src="https://i.ibb.co/vLyndPX/usuario-sin-foto.png"/>
+                :
+                <img type ="button" className="btnHeaderOptions" alt="img" src={userr.photoURL}/>
             }
                 <div className="dropdownContent">
                     <h5 className="goToProfile">Ir al perfil</h5>
