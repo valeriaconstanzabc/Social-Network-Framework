@@ -53,7 +53,7 @@ function UserProvider({ children }) {
     }
   }
 
-  const editar = item => {
+  const edit = item => {
     setEditPublication(true)
     setId(item.id)
   }
@@ -75,7 +75,7 @@ function UserProvider({ children }) {
     <Provider value={{ publication, setPublication, publicationfeed,
         cancel, user, setUser, post, setPost, deletePublication,
         editPublication, setEditPublication, saveEditPublication,
-        editar, id, setId, newPublication, setNewPublication
+        edit, id, setId, newPublication, setNewPublication
 
     }}>
       {children}

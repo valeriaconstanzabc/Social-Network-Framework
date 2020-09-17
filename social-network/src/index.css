@@ -431,6 +431,16 @@
 .buttonSave, .cancelEditCrud {
   height: 30px; }
 
+.reactions {
+  display: flex;
+  background: rgba(233, 113, 104, 0.5);
+  border-radius: 10px;
+  width: 50px;
+  height: 27px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px; }
+
 .imgOptionsDots {
   width: 23px; }
 

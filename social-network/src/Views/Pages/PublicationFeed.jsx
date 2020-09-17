@@ -6,7 +6,7 @@ import { auth } from '../../firebase.js'
 const PublicationFeed = () => {
 
   let { post, setPost, deletePublication, editPublication, 
-    setEditPublication, saveEditPublication, editar, 
+    setEditPublication, saveEditPublication, edit, 
     setNewPublication } = useContext(UserContext)
 
   const userr = auth.currentUser;
@@ -40,7 +40,7 @@ const PublicationFeed = () => {
                   <div className="crudContainer">
                     <button type ="button" className="btnCrudOptions"><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/dots1.png" alt="imagen editar" className="imgOptionsDots"/></button>
                     <div className="dropdownContentEdit">
-                      <button className="editCrud" onClick={() => editar(item)}>Editar</button>
+                      <button className="editCrud" onClick={() => edit(item)}>Editar</button>
                       <button className="deleteCrud" onClick={() => deletePublication(item.id)}>Delete</button>  
                     </div>
                   </div>
