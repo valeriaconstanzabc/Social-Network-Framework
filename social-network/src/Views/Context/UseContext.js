@@ -11,6 +11,8 @@ function UserProvider({ children }) {
   const [publication, setPublication] = React.useState('')
   const [post, setPost] = React.useState([])
   const [editPublication, setEditPublication] = React.useState(false)
+  const [id, setId] = React.useState('')
+  const [newPublication, setNewPublication] = React.useState('')
 
   const userr = auth.currentUser;
 
@@ -34,12 +36,7 @@ function UserProvider({ children }) {
         name: userr.displayName,
         like: [],
       }
-      const data = await db.collection('Publicaciones').add(newPublication)
-
-      setPost([
-        ...post,
-        {...newPublication, id: data.id}
-      ])
+      await db.collection('Publicaciones').add(newPublication)
       setPublication('')
     }
     catch (error){
@@ -56,10 +53,30 @@ function UserProvider({ children }) {
     }
   }
 
+  const editar = item => {
+    setEditPublication(true)
+    setId(item.id)
+  }
+
+  const saveEditPublication = async () => {
+    try {
+      const db = firebase.firestore()
+      await db.collection('Publicaciones').doc(id).update({
+        date: new Date().toLocaleString(),
+        text: newPublication
+      })
+      setEditPublication(false)
+      console.log('La info se guardó')
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <Provider value={{ publication, setPublication, publicationfeed,
         cancel, user, setUser, post, setPost, deletePublication,
-        editPublication, setEditPublication
+        editPublication, setEditPublication, saveEditPublication,
+        editar, id, setId, newPublication, setNewPublication
+
     }}>
       {children}
     </Provider>
