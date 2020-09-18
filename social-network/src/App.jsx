@@ -15,6 +15,7 @@ import SignIn from './Views/Pages/SignIn';
 import HeaderFeed from './Views/Components/HeaderFeed';
 import Feed from './Views/Pages/Feed';
 import PublicationFeed from './Views/Pages/PublicationFeed.jsx';
+import Profile from './Views/Pages/Profile';
 
 function App() {
 
@@ -50,13 +51,20 @@ function App() {
             <SignIn />
           </Route>
 
-          <UserProvider>
             <Route path="/inicio">
-              <HeaderFeed />
-              <Feed />
-              <PublicationFeed />
+              <UserProvider>
+                <HeaderFeed />
+                <Feed />
+                <PublicationFeed />
+              </UserProvider>
             </Route>
-          </UserProvider>
+
+            <Route path="/perfil">
+              <UserProvider>
+                <HeaderFeed />
+                <Profile />
+              </UserProvider>
+            </Route>
 
         </Switch>
         <Footer />

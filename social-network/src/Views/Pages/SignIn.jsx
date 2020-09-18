@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../Context/UseContext.js'
 import { withRouter } from 'react-router-dom'
 import { hiddenPassword } from '../Components/Function.js';
 import { auth, db } from '../../firebase.js'
@@ -6,9 +7,11 @@ import firebase from 'firebase/app'
 
 const SignIn = (props) => {
 
+    let { district, setDistrict } = useContext(UserContext)
+
     const [name, setName] = React.useState('')
     const [email, setEmail] = React.useState('')
-    const [district, setDistrict] = React.useState('')
+    // const [district, setDistrict] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
 
@@ -63,6 +66,7 @@ const SignIn = (props) => {
             await db.collection('usuarios').doc(res.user.uid).set({
                 email: res.user.email,
                 uid: res.user.uid,
+                district: district
             })
             setName('')
             setEmail('')
@@ -81,7 +85,7 @@ const SignIn = (props) => {
                 return
             }
         }
-    }, [email, pass, name, observer])
+    }, [email, pass, name, observer, district, setDistrict])
 
     const loginWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();

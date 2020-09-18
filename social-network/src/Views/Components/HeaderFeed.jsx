@@ -29,6 +29,10 @@ const HeaderFeed = (props) => {
         }
     }, [props.history, setUser])
 
+    const profile = () => {
+        props.history.push('/perfil')
+    }
+
     return (
         <div className="headerFeed">
             <div className="headerNotificationFeed">
@@ -59,7 +63,7 @@ const HeaderFeed = (props) => {
                 <img type ="button" className="btnHeaderOptions" alt="img" src={userr.photoURL}/>
             }
                 <div className="dropdownContent">
-                    <h5 className="goToProfile">Ir al perfil</h5>
+                    <button className="goToProfile" onClick={() => profile()}>Ir al perfil</button>
                     <button onClick={() => cerrarSesion()} className="logout">Cerrar sesión</button>  
                 </div>
             </div>

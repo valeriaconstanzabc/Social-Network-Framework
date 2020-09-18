@@ -1,0 +1,82 @@
+.containerPageProfile{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    // height: 900px;
+
+    // background-image: url("imagenes/FondoSinVentanas.png");
+    // background-position: center center;
+    // background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-size: cover;
+}
+    .containerProfile{
+        display: flex;
+        padding: 30px;
+        // height: 570px;
+        width: 720px;
+        margin: 125px 40px 90px 40px;
+        font-family: $Font1;
+        color: $Color3;
+        font-size: 14px;
+        background: $Color4;
+        box-shadow: $ShadowButton1;
+        border-radius: 10px;
+        // word-wrap: break-word;
+    }
+        .containerDescriptionUsername{
+            display: flex;
+            flex-direction: column;   
+            width: 70%;
+            
+            // -webkit-order: 0;
+            // -ms-flex-order: 0;
+            // order: 0;
+            // -webkit-flex: 1 1 auto;
+            // -ms-flex: 1 1 auto;
+            // flex: 1 1 auto;
+            // -webkit-align-self: auto;
+            // -ms-flex-item-align: auto;
+            // align-self: auto;           
+        }
+            .nameProfile{
+                font-size: 32px;
+                // margin: 0;
+                padding-bottom: 20px;
+            }
+            .description, .mail, .age, .location{
+                padding-bottom: 10px;
+                font-size: 20px;
+            }
+            .profileDescription, .profileAge, .profileMail {
+                padding-bottom: 20px;
+            }
+    .containerImgAndButton{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 30%
+        // margin: 10px 0px 10px 15px;
+
+        // -webkit-order: 0;
+        // -ms-flex-order: 0;
+        // order: 0;
+        // -webkit-flex: 0 1 auto;
+        // -ms-flex: 0 1 auto;
+        // flex: 0 1 auto;
+        // -webkit-align-self: auto;
+        // -ms-flex-item-align: auto;
+        // align-self: auto;
+    }
+        .imgProfile{
+            width: 100%;
+            border-radius: 50%;
+            border: 4px solid $Color2;
+        }
+            .editProfile{
+                @extend %Button-blue;
+                width: 100%;
+                height: 30px;
+            }
