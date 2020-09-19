@@ -1,29 +1,12 @@
 // import React from 'react'
-import React from 'react'
-import firebase from 'firebase/app'
+import React, { useContext } from 'react'
+import { UserContext } from '../Context/UseContext.js'
 import { auth } from '../../firebase.js'
 
 const Profile = () => {
 
-    const [infoUser, setInfoUser] = React.useState('')
+    let { infoUser } = useContext(UserContext)
     const userr = auth.currentUser;
-
-    React.useEffect(() => {
-
-        const ReadUser = async () => {
-            const db = firebase.firestore()
-            try {
-                const data = await db.collection('usuarios').get()
-                const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
-                console.log(arrayData) 
-                setInfoUser(arrayData) 
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        ReadUser()
-    
-    }, [])
 
     return (
         <div className="containerPageProfile">
@@ -39,15 +22,20 @@ const Profile = () => {
                     <span className="profileAge">??</span>
                     <div className="toAdd1"></div>
                     <label className="location" htmlFor="location"><b>De donde eres:</b></label>
-                    {/* {
-                        infoUser.map(item => ( */}
-                            <span className="profileLocation">{userr.district}</span>
-                    {/* //     ))
-                    // } */}
+                    {
+                        infoUser.map(item => (
+                            <span key={item} className="profileLocation">{item.district}</span>
+                        ))
+                    }
                     <div className="toAdd2"></div>
                 </div>
                 <div className="containerImgAndButton">
-                    <img className="imgProfile" alt="img usuario" src={userr.photoURL}/>
+                    {
+                        userr.photoURL === null ?
+                        <img type ="button" className="imgProfile"  alt="img usuario" src="https://i.ibb.co/vLyndPX/usuario-sin-foto.png"/>
+                        :
+                        <img type ="button" className="imgProfile"  alt="img usuario" src={userr.photoURL}/>
+                    }
                     <div className="addButton">
                         <button className="editProfile">Editar perfil</button>
                     </div>

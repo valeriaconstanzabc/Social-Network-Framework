@@ -14,6 +14,7 @@ function UserProvider({ children }) {
   const [editPublication, setEditPublication] = React.useState(false)
   const [id, setId] = React.useState('')
   const [newPublication, setNewPublication] = React.useState('')
+  const [infoUser, setInfoUser] = React.useState([])
 
   const userr = auth.currentUser;
   const db = firebase.firestore()
@@ -101,12 +102,30 @@ function UserProvider({ children }) {
     }
   };
 
+  React.useEffect(() => {
+
+    const ReadUser = async () => {
+        const db = firebase.firestore()
+        try {
+            const data = await db.collection('usuarios').get()
+            const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
+            const userPresent = arrayData.filter( item => item.email === userr.email)
+            console.log(userPresent)
+            setInfoUser(userPresent) 
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    ReadUser()
+
+}, [ userr.email, setInfoUser])
+
   return (
     <Provider value={{ publication, setPublication, publicationfeed,
         cancel, user, setUser, post, setPost, deletePublication,
         editPublication, setEditPublication, saveEditPublication,
         edit, id, setId, newPublication, setNewPublication, like,
-        district, setDistrict
+        district, setDistrict, infoUser, setInfoUser
 
     }}>
       {children}
