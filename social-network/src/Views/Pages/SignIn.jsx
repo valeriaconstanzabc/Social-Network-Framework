@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { hiddenPassword } from '../Components/Function.js';
-import { auth, db } from '../../firebase.js'
+import { auth } from '../../firebase.js'
 import firebase from 'firebase/app'
 
 const SignIn = (props) => {
@@ -60,13 +60,6 @@ const SignIn = (props) => {
             await res.user.updateProfile({
                 displayName: name,
             })
-            // await db.collection('usuarios').doc(res.user.uid).set({
-            //     email: res.user.email,
-            //     uid: res.user.uid,
-            //     years: "",
-            //     description: "",
-            //     district: ""
-            // })
             setName('')
             setEmail('')
             setPass('')

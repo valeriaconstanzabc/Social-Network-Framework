@@ -112,24 +112,32 @@ function UserProvider({ children }) {
     const ReadUser2 = async () => {
       const db = firebase.firestore()
       try {
-          const data = await db.collection('usuarios').get()
-          const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
-          const userPresent = arrayData.filter( item => item.email === userr.email)
-          console.log(userPresent)
-          setUno(userPresent) 
+          await db.collection('usuarios').onSnapshot(
+            (snap => {
+              const arrayData = snap.docs.map(doc => ({id: doc.id, ...doc.data()}))
+              const userPresent = arrayData.filter( item => item.email === userr.email)
+              console.log(userPresent)
+              setUno(userPresent) 
+            }))
       } catch (error) {
           console.log(error)
       }
   }
 
     const ReadUser = async () => {
-        const db = firebase.firestore()
+        
         try {
-            const data2 = await db.collection('usuarios2').get()
-            const arrayData2 = data2.docs.map(doc => ({id: doc.id, ...doc.data()}))
+          const db = firebase.firestore()
+          await db.collection('usuarios2').onSnapshot(
+            (snap => {
+            const arrayData2 = snap.docs.map((doc) => ({id: doc.id, ...doc.data()}))
             const userPresent2 = arrayData2.filter( item => item.email === userr.email)
             console.log(userPresent2)
             setInfoUser(userPresent2) 
+          }))
+            
+            
+            
         } catch (error) {
             console.log(error)
         }
