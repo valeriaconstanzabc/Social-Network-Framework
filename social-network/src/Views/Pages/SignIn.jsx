@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../Context/UseContext.js'
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { hiddenPassword } from '../Components/Function.js';
 import { auth, db } from '../../firebase.js'
@@ -7,11 +6,9 @@ import firebase from 'firebase/app'
 
 const SignIn = (props) => {
 
-    let { district, setDistrict } = useContext(UserContext)
 
     const [name, setName] = React.useState('')
     const [email, setEmail] = React.useState('')
-    // const [district, setDistrict] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
 
@@ -66,12 +63,13 @@ const SignIn = (props) => {
             await db.collection('usuarios').doc(res.user.uid).set({
                 email: res.user.email,
                 uid: res.user.uid,
-                district: district
+                years: "",
+                description: "",
+                district: ""
             })
             setName('')
             setEmail('')
             setPass('')
-            setDistrict('')
             setError(null)
             observer()
         } catch (error) {
@@ -85,7 +83,7 @@ const SignIn = (props) => {
                 return
             }
         }
-    }, [email, pass, name, observer, district, setDistrict])
+    }, [ email, pass, name, observer ])
 
     const loginWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -128,16 +126,6 @@ const SignIn = (props) => {
                     name="email" 
                     onChange={(e) => setEmail(e.target.value)} 
                     value={email}
-                    required
-                />
-                <label htmlFor="comuna" className="text"><b>Comuna a la perteneces</b></label>
-                <input 
-                    type="text" 
-                    className="district" 
-                    placeholder="Ejemplo: Puente alto" 
-                    name="comuna" 
-                    onChange={(e) => setDistrict(e.target.value)} 
-                    value={district}
                     required
                 />
                 <label htmlFor="psw" className="text"><b>Contraseña</b></label>

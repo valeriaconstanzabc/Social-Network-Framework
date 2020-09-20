@@ -4,7 +4,8 @@
 /* <--------------COLORS------------------------------> */
 /* <--------------SHADOWS-----------------------------> */
 /* <--------------BUTTONS-----------------------------> */
-.logInButton, #next_button, #btnRegister, #btnPublish, #btnCancel, .buttonSave, .cancelEditCrud, .editProfile {
+.logInButton, #next_button, #btnRegister, #btnPublish, #btnCancel, .buttonSave, .cancelEditCrud, .editProfile, .editProfileCancel,
+.editProfileSave {
   font-family: "Actor", sans-serif;
   font-size: 16px;
   color: white;
@@ -21,7 +22,9 @@
   outline: none; }
 
 /* <--------------INPUTS------------------------------> */
-.email_login, #password_login, .name, .email, .password, .district, .textPublication, .postEditCrud {
+.email_login, #password_login, .name, .email, .password, .district, .textPublication, .postEditCrud, .profileLocationImput,
+.profileDescriptionImput,
+.profileAgeImput {
   width: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -494,7 +497,7 @@
   font-size: 32px;
   padding-bottom: 20px; }
 
-.description, .mail, .age, .location {
+.description, .mail, .years, .location {
   padding-bottom: 10px;
   font-size: 20px; }
 
@@ -515,7 +518,27 @@
 
 .editProfile {
   width: 100%;
-  height: 30px; }
+  height: 35px; }
+
+.addButton {
+  width: 100%;
+  box-sizing: border-box; }
+
+.containerBtnsProfile {
+  justify-content: space-around;
+  margin: 0px 10px 0px 10px; }
+
+.editProfileCancel,
+.editProfileSave {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 20px; }
+
+.profileLocationImput,
+.profileDescriptionImput,
+.profileAgeImput {
+  width: 470px;
+  margin-bottom: 20px; }
 
 body {
   margin: 0;

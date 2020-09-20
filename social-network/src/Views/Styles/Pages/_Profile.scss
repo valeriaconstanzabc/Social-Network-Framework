@@ -45,7 +45,7 @@
                 // margin: 0;
                 padding-bottom: 20px;
             }
-            .description, .mail, .age, .location{
+            .description, .mail, .years, .location{
                 padding-bottom: 10px;
                 font-size: 20px;
             }
@@ -78,5 +78,29 @@
             .editProfile{
                 @extend %Button-blue;
                 width: 100%;
-                height: 30px;
+                height: 35px;
             }
+    .addButton{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .containerBtnsProfile{
+        justify-content: space-around;
+        margin: 0px 10px 0px 10px;
+    }
+
+    .editProfileCancel, 
+    .editProfileSave {
+        @extend %Button-blue;
+        width: 100%;
+        height: 35px;
+        margin-bottom: 20px;
+    }
+
+    .profileLocationImput,
+    .profileDescriptionImput,
+    .profileAgeImput {
+        @extend %Input-blue;
+        width: 470px;
+        margin-bottom: 20px;
+    }
