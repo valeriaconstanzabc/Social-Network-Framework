@@ -7,7 +7,7 @@ const PublicationFeed = () => {
 
   let { post, setPost, deletePublication, editPublication, 
     setEditPublication, saveEditPublication, edit, 
-    setNewPublication, like } = useContext(UserContext)
+    setNewPublication, like, url } = useContext(UserContext)
 
   const userr = auth.currentUser;
   const db = firebase.firestore()
@@ -75,7 +75,7 @@ const PublicationFeed = () => {
                     <span className="currentText" type="text">{item.text}</span>
                   }
                 </div>
-                <div className="toAdd"></div>
+                <div className="toAdd"><img src={item.image} alt=""/></div>
               </div>
 
               <div className="reactions">

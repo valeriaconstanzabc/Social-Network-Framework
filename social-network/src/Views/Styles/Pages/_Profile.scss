@@ -70,6 +70,18 @@
         // -ms-flex-item-align: auto;
         // align-self: auto;
     }
+    .containerBtnEditImgProfile{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .editImgProfil{
+        @extend %Img-button;
+        padding: 0;
+    }
+    .imgBtnEditProfil{
+        width: 40px;
+    }
         .imgProfile{
             width: 100%;
             border-radius: 50%;

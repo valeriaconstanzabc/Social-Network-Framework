@@ -1,6 +1,6 @@
 import React from 'react'
 import firebase from 'firebase/app'
-import { auth } from '../../firebase.js'
+import { auth, storage } from '../../firebase.js'
 
 let UserContext = React.createContext()
 let { Provider, Consumer } = UserContext
@@ -47,11 +47,35 @@ function UserProvider({ children }) {
       }
       await db.collection('Publicaciones').add(newPublication)
       setPublication('')
+      updateImage()
     }
     catch (error){
       console.log(error)
     }
   }
+
+  const [image, setImage] = React.useState(null)
+  const [url, setUrl] = React.useState("")
+  const updateImage = () => {
+      if(image) {
+          const uploadTask = storage.ref(`ImgPublication/${image.name}`).put(image)
+
+          uploadTask.on(
+            "state_changed",
+            () => {
+                storage
+                .ref("ImgPublication")
+                .child(image.name)
+                .getDownloadURL()
+                .then(url => {
+                    setUrl(url)
+                })
+            }
+        )
+      }
+  }
+
+  
 
   const deletePublication = async (id) => {
     try {
@@ -148,7 +172,6 @@ function UserProvider({ children }) {
 
 }, [ userr.email, setInfoUser, db])
 
-
     const saveInfoProfile = async () => {
       try {
         const docUsers = await db.collection('usuarios').doc(userr.uid).set({
@@ -163,7 +186,6 @@ function UserProvider({ children }) {
         console.log(error) 
       }
     }
-
 
 const editProfileEvent = item => {
   setEditProfile(true)
@@ -194,7 +216,9 @@ const saveEditProfile = async () => {
         edit, id, setId, newPublication, setNewPublication, like,
         district, setDistrict, infoUser, setInfoUser, editProfile, setEditProfile,
         description, setDescription, years, setYears, saveEditProfile,
-        editProfileEvent, uno, setUno, saveInfoProfile
+        editProfileEvent, uno, setUno, saveInfoProfile,
+
+        setImage, url
     }}>
       {children}
     </Provider>

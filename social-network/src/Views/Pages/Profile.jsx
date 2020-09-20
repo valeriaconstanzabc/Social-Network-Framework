@@ -16,7 +16,6 @@ const Profile = () => {
         setEditProfile(false)
     }
 
-
     return (
         <div className="containerPageProfile">
             {
@@ -74,12 +73,17 @@ const Profile = () => {
                         </div>
 
                         <div className="containerImgAndButton">
-                            {
-                                userr.photoURL === null ?
-                                <img type ="button" className="imgProfile"  alt="img usuario" src="https://i.ibb.co/vLyndPX/usuario-sin-foto.png"/>
-                                :
-                                <img type ="button" className="imgProfile"  alt="img usuario" src={userr.photoURL}/>
-                            }
+                            {/* <div>
+                                <div className="containerBtnEditImgProfile">
+                                    <input type="file" className="editImgProfil" onChange={choosefile}><img className="imgBtnEditProfil" src="https://i.ibb.co/dcWHZF4/Sin-t-tulo-2.png" alt=""/></input>
+                                </div> */}
+                                {
+                                    userr.photoURL === null ?
+                                    <img type ="button" className="imgProfile"  alt="img usuario" src="https://i.ibb.co/vLyndPX/usuario-sin-foto.png"/>
+                                    :
+                                    <img type ="button" className="imgProfile"  alt="img usuario" src={userr.photoURL}/>
+                                }
+                            {/* </div> */}
                             <div className="addButton">
                                 {
                                     editProfile === false ?

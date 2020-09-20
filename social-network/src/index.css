@@ -15,7 +15,7 @@
   border-radius: 6px;
   cursor: pointer; }
 
-.goToProfile, .logout, .btngoogle, .btnFacebook, .btnCrudOptions, .dropdownContentEdit button, .btnLike {
+.goToProfile, .logout, .btngoogle, .btnFacebook, .btnCrudOptions, .dropdownContentEdit button, .btnLike, .editImgProfil {
   border: 0px;
   background-color: Transparent;
   cursor: pointer;
@@ -510,6 +510,17 @@
   justify-content: space-between;
   align-items: flex-end;
   width: 30%; }
+
+.containerBtnEditImgProfile {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; }
+
+.editImgProfil {
+  padding: 0; }
+
+.imgBtnEditProfil {
+  width: 40px; }
 
 .imgProfile {
   width: 100%;

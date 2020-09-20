@@ -1,14 +1,35 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../Context/UseContext.js'
+import { auth } from '../../firebase.js'
 
 const Feed = () => {
 
-    let { publication, setPublication, publicationfeed, cancel } = useContext(UserContext)
+    let { publication, setPublication, publicationfeed, cancel, setImage } = useContext(UserContext)
+    const [error, setError] = React.useState("")
+    const userr = auth.currentUser;
+
+    const choosefile = (e) => {
+        const file = e.target.files[0]
+        if(file){
+            const fileType = file["type"]
+            const validImageTypes = ["image/jpeg", "image/png", "image/jpg",]
+            if(validImageTypes.includes(fileType)){
+                setError("")
+                setImage(file)
+            }else {
+                setError('* Por favor selecciona un formato válido (jpeg, png, jpg)')
+            }
+        }
+    }
 
     return (
         <div className="containerLofche">
             <div className="feedLofche">
                 <form className="publicationFeed">
+                    {/* <div className="containerBtnEditImgProfile"> */}
+                    <input type="file" className="editImgProfil" onChange={choosefile}></input>
+                    <p className="error" id="errorMessage">{error}</p>
+                    {/* </div> */}
                     <input 
                         type="text" 
                         className="textPublication" 
