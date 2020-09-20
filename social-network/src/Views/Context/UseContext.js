@@ -20,6 +20,8 @@ function UserProvider({ children }) {
   const [years, setYears] = React.useState('')
   const [district, setDistrict] = React.useState('')
 
+  const [uno, setUno] = React.useState([])
+
   const userr = auth.currentUser;
   const db = firebase.firestore()
 
@@ -107,22 +109,53 @@ function UserProvider({ children }) {
   };
 
   React.useEffect(() => {
+    const ReadUser2 = async () => {
+      const db = firebase.firestore()
+      try {
+          const data = await db.collection('usuarios').get()
+          const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
+          const userPresent = arrayData.filter( item => item.email === userr.email)
+          console.log(userPresent)
+          setUno(userPresent) 
+      } catch (error) {
+          console.log(error)
+      }
+  }
 
     const ReadUser = async () => {
         const db = firebase.firestore()
         try {
-            const data = await db.collection('usuarios').get()
-            const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
-            const userPresent = arrayData.filter( item => item.email === userr.email)
-            console.log(userPresent)
-            setInfoUser(userPresent) 
+            const data2 = await db.collection('usuarios2').get()
+            const arrayData2 = data2.docs.map(doc => ({id: doc.id, ...doc.data()}))
+            const userPresent2 = arrayData2.filter( item => item.email === userr.email)
+            console.log(userPresent2)
+            setInfoUser(userPresent2) 
         } catch (error) {
             console.log(error)
         }
     }
-    ReadUser()
 
-}, [ userr.email, setInfoUser])
+    ReadUser()
+    ReadUser2()
+
+}, [ userr.email, setInfoUser, db])
+
+
+    const saveInfoProfile = async () => {
+      try {
+        const docUsers = await db.collection('usuarios').doc(userr.uid).set({
+          email: userr.email,
+          uid: userr.uid
+        })
+            const arrayData2 = docUsers.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            console.log(arrayData2)
+            setInfoUser(arrayData2) 
+          
+      } catch (error) { 
+        console.log(error) 
+      }
+    }
+
 
 const editProfileEvent = item => {
   setEditProfile(true)
@@ -132,7 +165,9 @@ const editProfileEvent = item => {
 const saveEditProfile = async () => {
   try {
     const db = firebase.firestore()
-    await db.collection('usuarios').doc(id).update({
+    await db.collection('usuarios2').doc(id).set({
+      email: userr.email,
+      uid: userr.uid,
       years: years,
       description: description,
       district: district
@@ -151,7 +186,7 @@ const saveEditProfile = async () => {
         edit, id, setId, newPublication, setNewPublication, like,
         district, setDistrict, infoUser, setInfoUser, editProfile, setEditProfile,
         description, setDescription, years, setYears, saveEditProfile,
-        editProfileEvent
+        editProfileEvent, uno, setUno, saveInfoProfile
     }}>
       {children}
     </Provider>

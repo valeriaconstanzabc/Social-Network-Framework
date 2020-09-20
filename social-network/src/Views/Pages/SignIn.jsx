@@ -60,13 +60,13 @@ const SignIn = (props) => {
             await res.user.updateProfile({
                 displayName: name,
             })
-            await db.collection('usuarios').doc(res.user.uid).set({
-                email: res.user.email,
-                uid: res.user.uid,
-                years: "",
-                description: "",
-                district: ""
-            })
+            // await db.collection('usuarios').doc(res.user.uid).set({
+            //     email: res.user.email,
+            //     uid: res.user.uid,
+            //     years: "",
+            //     description: "",
+            //     district: ""
+            // })
             setName('')
             setEmail('')
             setPass('')

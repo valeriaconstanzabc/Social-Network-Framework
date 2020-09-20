@@ -7,7 +7,7 @@ import {auth} from '../../firebase.js'
 
 const HeaderFeed = (props) => {
 
-    let { setUser } = useContext(UserContext)
+    let { setUser, saveInfoProfile } = useContext(UserContext)
     const userr = auth.currentUser;
 
     const cerrarSesion = () => {
@@ -16,7 +16,6 @@ const HeaderFeed = (props) => {
                 props.history.push('/')
             })
     }
-
 
     React.useEffect(() => {
         if(auth.currentUser){
@@ -31,6 +30,7 @@ const HeaderFeed = (props) => {
 
     const profile = () => {
         props.history.push('/perfil')
+        saveInfoProfile()
     }
 
     return (

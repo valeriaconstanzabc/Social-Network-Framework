@@ -7,7 +7,8 @@ const Profile = () => {
 
     let { infoUser, saveEditProfile,editProfile, setEditProfile,
         description, setDescription, years, setYears,
-        district, setDistrict, editProfileEvent } = useContext(UserContext)
+        district, setDistrict, editProfileEvent 
+    } = useContext(UserContext)
 
     const userr = auth.currentUser;
 
@@ -82,7 +83,7 @@ const Profile = () => {
                             <div className="addButton">
                                 {
                                     editProfile === false ?
-                                    <button className="editProfile" onClick={() => editProfileEvent()}>Editar perfil</button>
+                                    <button className="editProfile" onClick={() => editProfileEvent(item)}>Editar perfil</button>
                                     :
                                     <div className="containerBtnsProfile">
                                         <button className="editProfileCancel" onClick={()=> cancelEditProfile()}>Cancelar</button>
