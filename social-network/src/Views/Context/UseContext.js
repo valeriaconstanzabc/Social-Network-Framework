@@ -126,7 +126,7 @@ function UserProvider({ children }) {
             const arrayData = snap.docs.map(doc => ({id: doc.id, ...doc.data()}))
             const userPresent = arrayData.filter( item => item.email === userr.email)
             console.log(userPresent)
-            setUno(userPresent) 
+            setInfoUser(userPresent) 
           }))
       } catch (error) {
           console.log(error)
@@ -156,13 +156,10 @@ function UserProvider({ children }) {
 /* <----------SE GUARDA LA INFO DEL PERFIL--------> */
   const saveInfoProfile = async () => {
     try {
-      const docUsers = await db.collection('usuarios').doc(userr.uid).set({
+      await db.collection('usuarios').doc(userr.uid).set({
         email: userr.email,
         uid: userr.uid
       })
-      const arrayData2 = docUsers.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      console.log(arrayData2)
-      setInfoUser(arrayData2) 
     } catch (error) { 
       console.log(error) 
     }

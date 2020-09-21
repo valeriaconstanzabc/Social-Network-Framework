@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { hiddenPassword } from '../Components/Function.js';
+import { hiddenPassword, observer  } from '../Components/Function.js';
 import { auth } from '../../firebase.js'
 import firebase from 'firebase/app'
 
@@ -15,25 +15,6 @@ const SignIn = (props) => {
     if(userr) {
         props.history.push('/inicio')
     }
-    
-    const observer = React.useCallback(async () => {
-        try {
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    console.log('existe usuario activo');
-                    console.log('*******************');
-                    console.log(user.emailVerified);
-                    console.log('*******************');
-                    props.history.push('/inicio')
-                } else {
-                    //    User is signed out.
-                    console.log('no existe usuario activo');
-                }
-            });
-        } catch (error) {
-            console.log(error)
-        }
-    }, [props.history])
 
     const processData = e => {
         e.preventDefault()
@@ -80,7 +61,7 @@ const SignIn = (props) => {
                 return
             }
         }
-    }, [ email, pass, name, observer ])
+    }, [ email, pass, name ])
 
     const loginWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();

@@ -14,6 +14,9 @@ const HeaderFeed = (props) => {
         .then(() => {
             props.history.push('/')
         })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     React.useEffect(() => {

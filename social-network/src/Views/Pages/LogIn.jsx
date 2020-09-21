@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { auth } from '../../firebase.js';
-import { hiddenPassword } from '../Components/Function.js';
+import { hiddenPassword, observer, verificate  } from '../Components/Function.js';
 import firebase from 'firebase/app'
 
 const LogIn = (props) => {
@@ -14,21 +14,6 @@ const LogIn = (props) => {
     
     if(userr) {
         props.history.push('/inicio')
-    }
-
-    const observer = () => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.log('existe usuario activo');
-                console.log('*******************');
-                console.log(user.emailVerified);
-                console.log('*******************');
-                props.history.push('/inicio')
-            } else {
-                //    User is signed out.
-                console.log('no existe usuario activo');
-            }
-        });
     }
 
     const processData = (e) => {
@@ -58,6 +43,7 @@ const LogIn = (props) => {
             setEmail('')
             setPass('')
             setError(null)
+            verificate()
             props.history.push('/inicio')
         } catch (error) {
             console.log(error)
