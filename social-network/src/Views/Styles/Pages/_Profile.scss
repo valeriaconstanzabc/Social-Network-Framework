@@ -14,7 +14,6 @@
     .containerProfile{
         display: flex;
         padding: 30px;
-        // height: 570px;
         width: 720px;
         margin: 125px 40px 90px 40px;
         font-family: $Font1;
@@ -23,25 +22,15 @@
         background: $Color4;
         box-shadow: $ShadowButton1;
         border-radius: 10px;
-        // word-wrap: break-word;
     }
         .containerDescriptionUsername{
             display: flex;
             flex-direction: column;   
-            width: 70%;
-            
-            // -webkit-order: 0;
-            // -ms-flex-order: 0;
-            // order: 0;
-            // -webkit-flex: 1 1 auto;
-            // -ms-flex: 1 1 auto;
-            // flex: 1 1 auto;
-            // -webkit-align-self: auto;
-            // -ms-flex-item-align: auto;
-            // align-self: auto;           
+            width: 70%;      
         }
             .nameProfile{
                 font-size: 32px;
+                width: 95%;
                 // margin: 0;
                 padding-bottom: 20px;
             }
@@ -58,17 +47,6 @@
         justify-content: space-between;
         align-items: flex-end;
         width: 30%
-        // margin: 10px 0px 10px 15px;
-
-        // -webkit-order: 0;
-        // -ms-flex-order: 0;
-        // order: 0;
-        // -webkit-flex: 0 1 auto;
-        // -ms-flex: 0 1 auto;
-        // flex: 0 1 auto;
-        // -webkit-align-self: auto;
-        // -ms-flex-item-align: auto;
-        // align-self: auto;
     }
         .imgProfile{
             width: 100%;
@@ -86,7 +64,6 @@
     }
     .containerBtnsProfile{
         justify-content: space-around;
-        margin: 0px 10px 0px 10px;
     }
 
     .editProfileCancel, 
@@ -101,6 +78,29 @@
     .profileDescriptionImput,
     .profileAgeImput {
         @extend %Input-blue;
-        width: 470px;
+        width: 93%;
         margin-bottom: 20px;
     }
+
+
+/* <---------------------MEDIA QUERY---------------------> */
+@media all and (max-width: 460px){
+    .editProfile {
+        height: 46px;
+    }
+}
+@media all and (max-width: 360px){
+    .containerProfile {
+        width: 220px;
+    }
+}
+// @media all and (max-width: 400px){
+//     .publicationFeed, .containerPublication{
+//         width: 250px;
+//     }
+// }
+// @media all and (max-width: 360px){
+//     .publicationFeed, .containerPublication{
+//         width: 220px;
+//     }
+// }

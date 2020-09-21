@@ -163,6 +163,10 @@
   .header {
     padding: 0px 40px 0px 40px; } }
 
+@media all and (max-width: 470px) {
+  .logoHeaderFeed {
+    padding-left: 0px; } }
+
 @media all and (max-width: 410px) {
   .logInButton {
     font-size: 16px;
@@ -227,7 +231,7 @@
 /* <---------------------MEDIA QUERY---------------------> */
 @media all and (max-width: 600px) {
   .welcomeLofche {
-    padding: 76px 40px 0px 40px; }
+    padding: 76px 40px 100px 40px; }
   .logoWelcome {
     width: 300px; }
   .containerWelcome {
@@ -344,6 +348,8 @@
 
 .feedLofche {
   display: flex;
+  width: 100%;
+  box-sizing: border-box;
   justify-content: center;
   padding: 0px 25px 25px 25px;
   margin-top: 125px; }
@@ -369,7 +375,6 @@
   margin-bottom: 90px; }
 
 .containerPublication {
-  padding: 25px;
   margin: 15px 0px 15px 0px; }
 
 .crudContainer {
@@ -476,6 +481,14 @@
   .publicationFeed, .containerPublication {
     width: 300px; } }
 
+@media all and (max-width: 400px) {
+  .publicationFeed, .containerPublication {
+    width: 250px; } }
+
+@media all and (max-width: 360px) {
+  .publicationFeed, .containerPublication {
+    width: 220px; } }
+
 .containerPageProfile {
   width: 100%;
   display: flex;
@@ -500,6 +513,7 @@
 
 .nameProfile {
   font-size: 32px;
+  width: 95%;
   padding-bottom: 20px; }
 
 .description, .mail, .years, .location {
@@ -530,8 +544,7 @@
   box-sizing: border-box; }
 
 .containerBtnsProfile {
-  justify-content: space-around;
-  margin: 0px 10px 0px 10px; }
+  justify-content: space-around; }
 
 .editProfileCancel,
 .editProfileSave {
@@ -542,8 +555,17 @@
 .profileLocationImput,
 .profileDescriptionImput,
 .profileAgeImput {
-  width: 470px;
+  width: 93%;
   margin-bottom: 20px; }
+
+/* <---------------------MEDIA QUERY---------------------> */
+@media all and (max-width: 460px) {
+  .editProfile {
+    height: 46px; } }
+
+@media all and (max-width: 360px) {
+  .containerProfile {
+    width: 220px; } }
 
 body {
   margin: 0;
