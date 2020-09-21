@@ -16,6 +16,7 @@ import HeaderFeed from './Views/Components/HeaderFeed';
 import Feed from './Views/Pages/Feed';
 import PublicationFeed from './Views/Pages/PublicationFeed.jsx';
 import Profile from './Views/Pages/Profile';
+import Message from './Views/Components/Message';
 
 function App() {
 
@@ -49,6 +50,11 @@ function App() {
           <Route path="/registro">
             <HeaderWelcome />
             <SignIn />
+          </Route>
+
+          <Route path="/verificacion">
+            <HeaderWelcome />
+            <Message />
           </Route>
 
             <Route path="/inicio">

@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { auth } from '../../firebase.js';
-import { hiddenPassword, observer, verificate  } from '../Components/Function.js';
+import { hiddenPassword, observer  } from '../Components/Function.js';
 import firebase from 'firebase/app'
 
 const LogIn = (props) => {
@@ -43,7 +43,6 @@ const LogIn = (props) => {
             setEmail('')
             setPass('')
             setError(null)
-            verificate()
             props.history.push('/inicio')
         } catch (error) {
             console.log(error)

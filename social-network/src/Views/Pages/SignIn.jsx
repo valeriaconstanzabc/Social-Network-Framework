@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { hiddenPassword, observer  } from '../Components/Function.js';
+import { hiddenPassword, observer, verificate  } from '../Components/Function.js';
 import { auth } from '../../firebase.js'
 import firebase from 'firebase/app'
 
@@ -10,11 +10,6 @@ const SignIn = (props) => {
     const [email, setEmail] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
-    const userr = auth.currentUser;
-
-    if(userr) {
-        props.history.push('/inicio')
-    }
 
     const processData = e => {
         e.preventDefault()
@@ -37,6 +32,7 @@ const SignIn = (props) => {
         console.log('Pasando todas las validaciones')
         setError(null)
         register()
+        props.history.push('/verificacion')
     }
 
     const register = React.useCallback(async () => {
@@ -49,6 +45,7 @@ const SignIn = (props) => {
             setEmail('')
             setPass('')
             setError(null)
+            verificate()
             observer()
         } catch (error) {
             console.log(error)

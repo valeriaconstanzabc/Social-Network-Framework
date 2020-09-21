@@ -4,7 +4,7 @@
 /* <--------------COLORS------------------------------> */
 /* <--------------SHADOWS-----------------------------> */
 /* <--------------BUTTONS-----------------------------> */
-.logInButton, #next_button, #btnRegister, #btnPublish, #btnCancel, .buttonSave, .cancelEditCrud, .editProfile, .editProfileCancel,
+.logInButton, .btnRedirecting, #next_button, #btnRegister, #btnPublish, #btnCancel, .buttonSave, .cancelEditCrud, .editProfile, .editProfileCancel,
 .editProfileSave {
   font-family: "Actor", sans-serif;
   font-size: 16px;
@@ -33,7 +33,7 @@
   background: #FFFFFF; }
 
 /* <--------------MODALS------------------------------> */
-.modalLogIn, .modalSignIn {
+.modalSignInRedirecting, .modalLogIn, .modalSignIn {
   display: flex;
   flex-direction: column;
   width: 310px;
@@ -211,6 +211,24 @@
 .socialMedia3 {
   height: 25px; }
 
+.containerMessage {
+  padding-top: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+
+.modalSignInRedirecting {
+  height: 300px;
+  margin: 0px;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  line-height: 30px; }
+
+.btnRedirecting {
+  width: 80%;
+  height: 30px; }
+
 /* <---------------IMPORT PAGES-------------------> */
 .containerBackground {
   width: 100%;
@@ -340,12 +358,6 @@
 #btnRegister {
   width: 100%;
   height: 30px; }
-
-#modalSignInRedirecting {
-  display: flex; }
-
-#btnRedirecting {
-  position: relative; }
 
 .eyePassword {
   width: 25px; }

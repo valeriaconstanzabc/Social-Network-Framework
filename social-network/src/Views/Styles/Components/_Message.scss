@@ -1,0 +1,21 @@
+.containerMessage{
+    padding-top: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.modalSignInRedirecting{
+    @extend %Modal-LogAndSign;
+
+    height: 300px;
+    margin: 0px;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    line-height: 30px;
+}
+.btnRedirecting{
+    @extend %Button-blue;
+    width: 80%;
+    height: 30px;
+}
