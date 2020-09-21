@@ -1,6 +1,15 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { auth } from '../../firebase.js'
 
-const Welcome = () => {
+const Welcome = (props) => {
+
+    const userr = auth.currentUser;
+    
+    if(userr) {
+        props.history.push('/inicio')
+    }
+
     return (
         <div className="welcomeLofche">
             <div className="divLogoWelcome">
@@ -17,4 +26,4 @@ const Welcome = () => {
     )
 }
 
-export default Welcome
+export default withRouter(Welcome)

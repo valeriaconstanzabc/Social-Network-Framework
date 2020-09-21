@@ -10,7 +10,12 @@ const SignIn = (props) => {
     const [email, setEmail] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
+    const userr = auth.currentUser;
 
+    if(userr) {
+        props.history.push('/inicio')
+    }
+    
     const observer = React.useCallback(async () => {
         try {
             auth.onAuthStateChanged((user) => {
