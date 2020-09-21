@@ -3,7 +3,8 @@ import { UserContext } from '../Context/UseContext.js'
 
 const Feed = () => {
 
-    let { publication, setPublication, publicationfeed, cancel } = useContext(UserContext)
+    let { publication, setPublication, publicationfeed, cancel 
+    } = useContext(UserContext)
 
     return (
         <div className="containerLofche">

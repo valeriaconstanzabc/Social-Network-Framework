@@ -10,6 +10,7 @@
 }
     .modalLogIn{
         @extend %Modal-LogAndSign;
+        margin: 125px 0px 125px 0px;
     }
     .modalLogIn h1{
         margin: 35px 0px 9px 0px;
@@ -23,7 +24,6 @@
     .containerPassword{
         display: flex;
         align-items: center;
-        margin-bottom: 25px;
     }
     .eyePassword{
         cursor: pointer;
@@ -52,6 +52,9 @@
     .registerHere{
         cursor: pointer;
         font-size: 11px;
+    }
+    .registerWith{
+        margin-top: 20px;
     }
 
 /* <---------------------MEDIA QUERY---------------------> */

@@ -1,21 +1,16 @@
 // import React from 'react'
 import React, { useContext } from 'react'
 import { UserContext } from '../Context/UseContext.js'
-import { auth } from '../../firebase.js'
 
 const Profile = () => {
 
-    let { infoUser, saveEditProfile,editProfile, setEditProfile,
-        description, setDescription, years, setYears,
-        district, setDistrict, editProfileEvent 
+    let { infoUser, saveEditProfile,editProfile, setEditProfile, description, userr,
+        setDescription, years, setYears, district, setDistrict, editProfileEvent 
     } = useContext(UserContext)
-
-    const userr = auth.currentUser;
 
     const cancelEditProfile = () => {
         setEditProfile(false)
     }
-
 
     return (
         <div className="containerPageProfile">

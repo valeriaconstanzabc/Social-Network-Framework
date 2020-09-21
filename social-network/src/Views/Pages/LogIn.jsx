@@ -71,16 +71,19 @@ const LogIn = (props) => {
     const loginWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
-        .then((result) => {
+        .then(() => {
             observer()
-        }).catch(function (error) { });
+        }).catch(() => {
+        });
     }
+
     const loginWithFacebook = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
-        .then((result) => {
+        .then(() => {
             observer()
-        }).catch(function (error) { });
+        }).catch(() =>{ 
+        });
     }
 
     return (

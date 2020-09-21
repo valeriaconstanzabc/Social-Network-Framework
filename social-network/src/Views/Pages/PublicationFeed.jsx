@@ -1,21 +1,16 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../Context/UseContext.js'
-import firebase from 'firebase/app'
-import { auth } from '../../firebase.js'
+import { db } from '../../firebase.js'
 
 const PublicationFeed = () => {
 
-  let { post, setPost, deletePublication, editPublication, 
-    setEditPublication, saveEditPublication, edit, 
-    setNewPublication, like } = useContext(UserContext)
-
-  const userr = auth.currentUser;
-  const db = firebase.firestore()
+  let { post, setPost, deletePublication, editPublication, setEditPublication, 
+    saveEditPublication, edit, setNewPublication, like, userr
+  } = useContext(UserContext)
 
   React.useEffect(() => {
     const printPublication = async () => {
       try {
-        
         await db.collection('Publicaciones').orderBy('date', 'desc').onSnapshot(
           (snap => {
             const arrayData = snap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -27,7 +22,7 @@ const PublicationFeed = () => {
       }
     }
     printPublication()
-  }, [ setPost, db ])
+  }, [ setPost ])
 
     return (
       <div className="containerPublicationFeed">

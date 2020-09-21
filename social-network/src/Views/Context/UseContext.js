@@ -19,22 +19,22 @@ function UserProvider({ children }) {
   const [description, setDescription ] = React.useState('')
   const [years, setYears] = React.useState('')
   const [district, setDistrict] = React.useState('')
-
   const [uno, setUno] = React.useState([])
 
   const userr = auth.currentUser;
   const db = firebase.firestore()
 
+/* <----------BNT CANCELAR PUBLICACIÓN------------> */
   const cancel = () => {
     setPublication('')
   }
 
-  const publicationfeed = async () => {
 
+/* <--------SE CREA PUBLICACIÓN EN FIREBASE-------> */
+  const publicationfeed = async () => {
     if(!publication.trim()){
       return
     }
-
     try {
       const db = firebase.firestore()
       const newPublication = {
@@ -53,6 +53,8 @@ function UserProvider({ children }) {
     }
   }
 
+
+/* <-----------BORRAR PUBLICACIÓN CREADA----------> */
   const deletePublication = async (id) => {
     try {
       const db = firebase.firestore()
@@ -62,11 +64,15 @@ function UserProvider({ children }) {
     }
   }
 
+
+/* <-------BOTÓN EDITAR  QUE ACTIVA TEXTAREA------> */
   const edit = item => {
     setEditPublication(true)
     setId(item.id)
   }
 
+
+/* <------GUARDA LA EDICIÓN DE LA PUBLICACIÓN-----> */
   const saveEditPublication = async () => {
     try {
       const db = firebase.firestore()
@@ -81,12 +87,13 @@ function UserProvider({ children }) {
     }
   }
 
+
+/* <---------SE CREAN Y GUARDAN LOS LIKES---------> */
   const like = (item) => {
     try {
       if (item.like === null || item.like === '') {
         item.like = [];
       }
-
     if (item.like.includes(userr.email)) {
       for (let i = 0; i < item.like.length; i++) {
         if (item.like[i] === userr.email) { // verifica si ya el usuario está en el array
@@ -108,84 +115,84 @@ function UserProvider({ children }) {
     }
   };
 
+
+/* <--------TIEMPO REAL INFO USUARIO PERFIL-------> */
   React.useEffect(() => {
     const ReadUser2 = async () => {
       const db = firebase.firestore()
       try {
-          await db.collection('usuarios').onSnapshot(
-            (snap => {
-              const arrayData = snap.docs.map(doc => ({id: doc.id, ...doc.data()}))
-              const userPresent = arrayData.filter( item => item.email === userr.email)
-              console.log(userPresent)
-              setUno(userPresent) 
-            }))
+        await db.collection('usuarios').onSnapshot(
+          (snap => {
+            const arrayData = snap.docs.map(doc => ({id: doc.id, ...doc.data()}))
+            const userPresent = arrayData.filter( item => item.email === userr.email)
+            console.log(userPresent)
+            setUno(userPresent) 
+          }))
       } catch (error) {
           console.log(error)
       }
   }
 
     const ReadUser = async () => {
-        
-        try {
-          const db = firebase.firestore()
-          await db.collection('usuarios2').onSnapshot(
-            (snap => {
-            const arrayData2 = snap.docs.map((doc) => ({id: doc.id, ...doc.data()}))
-            const userPresent2 = arrayData2.filter( item => item.email === userr.email)
-            console.log(userPresent2)
-            setInfoUser(userPresent2) 
-          }))
-            
-            
-            
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    ReadUser()
-    ReadUser2()
-
-}, [ userr.email, setInfoUser, db])
-
-
-    const saveInfoProfile = async () => {
       try {
-        const docUsers = await db.collection('usuarios').doc(userr.uid).set({
-          email: userr.email,
-          uid: userr.uid
-        })
-            const arrayData2 = docUsers.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-            console.log(arrayData2)
-            setInfoUser(arrayData2) 
-          
-      } catch (error) { 
-        console.log(error) 
+        const db = firebase.firestore()
+        await db.collection('usuarios2').onSnapshot(
+          (snap => {
+          const arrayData2 = snap.docs.map((doc) => ({id: doc.id, ...doc.data()}))
+          const userPresent2 = arrayData2.filter( item => item.email === userr.email)
+          console.log(userPresent2)
+          setInfoUser(userPresent2) 
+        }))  
+      } catch (error) {
+        console.log(error)
       }
     }
+    ReadUser()
+    ReadUser2()
+  }, [ userr.email, setInfoUser, db])
 
 
-const editProfileEvent = item => {
-  setEditProfile(true)
-  setId(item.id)
-}
 
-const saveEditProfile = async () => {
-  try {
-    const db = firebase.firestore()
-    await db.collection('usuarios2').doc(id).set({
-      email: userr.email,
-      uid: userr.uid,
-      years: years,
-      description: description,
-      district: district
-    })
-    setEditProfile(false)
-    console.log('La info se guardó')
-  } catch (err) {
-    console.log(err)
+/* <----------SE GUARDA LA INFO DEL PERFIL--------> */
+  const saveInfoProfile = async () => {
+    try {
+      const docUsers = await db.collection('usuarios').doc(userr.uid).set({
+        email: userr.email,
+        uid: userr.uid
+      })
+      const arrayData2 = docUsers.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      console.log(arrayData2)
+      setInfoUser(arrayData2) 
+    } catch (error) { 
+      console.log(error) 
+    }
   }
-}
+
+
+/* <--------BTN QUE PERMITE EDITAR PERFIL---------> */
+  const editProfileEvent = item => {
+    setEditProfile(true)
+    setId(item.id)
+  }
+
+
+/* <----------GUARDA INFO EDITADA PERFIL----------> */
+  const saveEditProfile = async () => {
+    try {
+      const db = firebase.firestore()
+      await db.collection('usuarios2').doc(id).set({
+        email: userr.email,
+        uid: userr.uid,
+        years: years,
+        description: description,
+        district: district
+      })
+      setEditProfile(false)
+      console.log('La info se guardó')
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <Provider value={{ publication, setPublication, publicationfeed,
@@ -194,7 +201,7 @@ const saveEditProfile = async () => {
         edit, id, setId, newPublication, setNewPublication, like,
         district, setDistrict, infoUser, setInfoUser, editProfile, setEditProfile,
         description, setDescription, years, setYears, saveEditProfile,
-        editProfileEvent, uno, setUno, saveInfoProfile
+        editProfileEvent, uno, setUno, saveInfoProfile, userr
     }}>
       {children}
     </Provider>

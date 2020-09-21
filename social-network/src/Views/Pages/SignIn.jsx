@@ -6,7 +6,6 @@ import firebase from 'firebase/app'
 
 const SignIn = (props) => {
 
-
     const [name, setName] = React.useState('')
     const [email, setEmail] = React.useState('')
     const [pass, setPass] = React.useState('')
@@ -81,16 +80,18 @@ const SignIn = (props) => {
     const loginWithGoogle = () => {
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
-        .then((result) => {
+        .then(() => {
             observer()
-        }).catch(function (error) { });
+        }).catch(() => {
+        });
     }
     const loginWithFacebook = () => {
         const provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
-        .then((result) => {
+        .then(() => {
             observer()
-        }).catch(function (error) { });
+        }).catch(() => {
+        });
     }
 
     return (
@@ -108,7 +109,6 @@ const SignIn = (props) => {
                     name="name" 
                     onChange={(e) => setName(e.target.value)} 
                     value={name}
-                    required
                 />
                 
                 <label htmlFor="email" className="text"><b>Correo Electrónico</b></label>
@@ -119,7 +119,6 @@ const SignIn = (props) => {
                     name="email" 
                     onChange={(e) => setEmail(e.target.value)} 
                     value={email}
-                    required
                 />
                 <label htmlFor="psw" className="text"><b>Contraseña</b></label>
                 <div className="containerPassword">
@@ -132,7 +131,6 @@ const SignIn = (props) => {
                         onChange={(e) => setPass(e.target.value)} 
                         value={pass}
                         autoComplete="on"
-                        required
                     />
                     <span  type="button" className="passwordHidden" onClick={() => hiddenPassword()}><img src="https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/ojo.png" className="eyePassword" alt="ojo"/></span>
                 </div>

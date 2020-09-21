@@ -7,14 +7,13 @@ import {auth} from '../../firebase.js'
 
 const HeaderFeed = (props) => {
 
-    let { setUser, saveInfoProfile } = useContext(UserContext)
-    const userr = auth.currentUser;
+    let { setUser, saveInfoProfile, userr } = useContext(UserContext)
 
     const cerrarSesion = () => {
         auth.signOut()
-            .then(() => {
-                props.history.push('/')
-            })
+        .then(() => {
+            props.history.push('/')
+        })
     }
 
     React.useEffect(() => {
