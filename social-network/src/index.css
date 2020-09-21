@@ -212,6 +212,15 @@
   height: 25px; }
 
 /* <---------------IMPORT PAGES-------------------> */
+.containerBackground {
+  width: 100%;
+  height: 900px;
+  background-image: url("https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/FondoGrande.jpg");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; }
+
 .welcomeLofche {
   width: 100%;
   padding: 76px 70px 0px 70px;
@@ -224,12 +233,15 @@
   font-family: "Comfortaa", cursive;
   color: white;
   width: 450px;
-  font-size: 21px;
+  font-size: 20px;
   line-height: 33px;
   padding-left: 5px; }
 
 /* <---------------------MEDIA QUERY---------------------> */
-@media all and (max-width: 600px) {
+@media all and (max-width: 770px) {
+  .containerBackground {
+    background-image: url("https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/FondoChico.jpg");
+    background-position: center; }
   .welcomeLofche {
     padding: 76px 40px 100px 40px; }
   .logoWelcome {
@@ -238,12 +250,16 @@
     width: 310px;
     font-size: 20px; } }
 
-@media all and (max-width: 410px) {
+@media all and (max-width: 578px) {
   .logoWelcome {
     width: 230px; }
   .containerWelcome {
     width: 230px;
     font-size: 19px; } }
+
+@media all and (max-width: 425px) {
+  .containerWelcome {
+    width: 190px; } }
 
 .containerLogIn {
   display: flex;
@@ -572,7 +588,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/FondoGrande.jpg");
+  background-image: url("https://raw.githubusercontent.com/valeriaconstanzabc/SCL013-social-network/master/src/imagenes/FondoSinVentanas.png");
   background-position: left;
   background-repeat: no-repeat;
   background-attachment: fixed;
