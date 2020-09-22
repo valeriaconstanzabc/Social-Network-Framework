@@ -30,7 +30,7 @@ const PublicationFeed = () => {
           post.map(item => (
             <div key={item.id} className="containerPublication">
               <div className="containerNameAndEdit">
-                  <span className="namePublication">{item.name || item.email}</span>
+                <span className="namePublication">{item.name}</span>
               {
                 item.uid === userr.uid ?
                   <div className="crudContainer">

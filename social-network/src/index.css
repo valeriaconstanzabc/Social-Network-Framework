@@ -456,6 +456,10 @@
   font-size: 25px;
   margin-bottom: 10px; }
 
+.linkNamePublication {
+  text-decoration: none;
+  color: #24255E; }
+
 .edit {
   display: flex;
   flex-direction: column;

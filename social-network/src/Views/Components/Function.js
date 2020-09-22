@@ -34,3 +34,16 @@ export const verificate = () => {
     // An error happened.
   });
 };
+
+export const saveInfoProfile = async () => {
+  const userr = auth.currentUser;
+  const db = firebase.firestore()
+  try {
+    await db.collection('usuarios').doc(userr.uid).set({
+      email: userr.email,
+      uid: userr.uid
+    })
+  } catch (error) { 
+    console.log(error) 
+  }
+}

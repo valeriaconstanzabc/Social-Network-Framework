@@ -7,7 +7,7 @@ import {auth} from '../../firebase.js'
 
 const HeaderFeed = (props) => {
 
-    let { setUser, saveInfoProfile, userr } = useContext(UserContext)
+    let { setUser, userr } = useContext(UserContext)
 
     const cerrarSesion = () => {
         auth.signOut()
@@ -32,7 +32,6 @@ const HeaderFeed = (props) => {
 
     const profile = () => {
         props.history.push('/perfil')
-        saveInfoProfile()
     }
 
     return (

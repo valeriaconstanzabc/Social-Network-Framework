@@ -33,7 +33,6 @@ const Profile = () => {
                                 :
                                 <span className="profileDescription">{item.description}</span>
                             }
-                            <div className="toAdd"></div>
                             <label className="mail" htmlFor="mail"><b>Mail de contacto:</b></label>
                             <span className="profileMail">{userr.email}</span>
                             <label className="years" htmlFor="years"><b>Edad:</b></label>
@@ -50,7 +49,6 @@ const Profile = () => {
                                 :
                                 <span className="profileAge">{item.years}</span>
                             }
-                            <div className="toAdd1"></div>
                             <label className="location" htmlFor="location"><b>De donde eres:</b></label>
                             {
                                 editProfile === true ?
@@ -65,7 +63,6 @@ const Profile = () => {
                                 :
                                 <span className="profileLocation">{item.district}</span>
                             }
-                            <div className="toAdd2"></div>
                         </div>
 
                         <div className="containerImgAndButton">

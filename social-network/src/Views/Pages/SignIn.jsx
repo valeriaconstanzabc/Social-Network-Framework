@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { hiddenPassword, observer, verificate  } from '../Components/Function.js';
+import { hiddenPassword, observer, verificate, saveInfoProfile  } from '../Components/Function.js';
 import { auth } from '../../firebase.js'
 import firebase from 'firebase/app'
 
@@ -46,6 +46,7 @@ const SignIn = (props) => {
             setPass('')
             setError(null)
             verificate()
+            saveInfoProfile()
             observer()
         } catch (error) {
             console.log(error)
@@ -65,6 +66,7 @@ const SignIn = (props) => {
         firebase.auth().signInWithPopup(provider)
         .then(() => {
             observer()
+            saveInfoProfile()
         }).catch(() => {
         });
     }
@@ -73,6 +75,7 @@ const SignIn = (props) => {
         firebase.auth().signInWithPopup(provider)
         .then(() => {
             observer()
+            saveInfoProfile()
         }).catch(() => {
         });
     }

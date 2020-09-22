@@ -132,44 +132,14 @@ function UserProvider({ children }) {
           console.log(error)
       }
   }
-
-    const ReadUser = async () => {
-      try {
-        const db = firebase.firestore()
-        await db.collection('usuarios2').onSnapshot(
-          (snap => {
-          const arrayData2 = snap.docs.map((doc) => ({id: doc.id, ...doc.data()}))
-          const userPresent2 = arrayData2.filter( item => item.email === userr.email)
-          console.log(userPresent2)
-          setInfoUser(userPresent2) 
-        }))  
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    ReadUser()
     ReadUser2()
   }, [ userr.email, setInfoUser, db])
-
-
-
-/* <----------SE GUARDA LA INFO DEL PERFIL--------> */
-  const saveInfoProfile = async () => {
-    try {
-      await db.collection('usuarios').doc(userr.uid).set({
-        email: userr.email,
-        uid: userr.uid
-      })
-    } catch (error) { 
-      console.log(error) 
-    }
-  }
 
 
 /* <--------BTN QUE PERMITE EDITAR PERFIL---------> */
   const editProfileEvent = item => {
     setEditProfile(true)
-    setId(item.id)
+    setId(item.uid)
   }
 
 
@@ -177,7 +147,7 @@ function UserProvider({ children }) {
   const saveEditProfile = async () => {
     try {
       const db = firebase.firestore()
-      await db.collection('usuarios2').doc(id).set({
+      await db.collection('usuarios').doc(userr.uid).update({
         email: userr.email,
         uid: userr.uid,
         years: years,
@@ -198,7 +168,7 @@ function UserProvider({ children }) {
         edit, id, setId, newPublication, setNewPublication, like,
         district, setDistrict, infoUser, setInfoUser, editProfile, setEditProfile,
         description, setDescription, years, setYears, saveEditProfile,
-        editProfileEvent, uno, setUno, saveInfoProfile, userr
+        editProfileEvent, uno, setUno, userr
     }}>
       {children}
     </Provider>
